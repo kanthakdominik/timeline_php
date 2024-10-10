@@ -18,10 +18,10 @@ class EventsTableSeeder extends Seeder
                 'start_date' => '1969-04-14',
                 'end_date' => '1969-10-17',
                 'description' => 'This tour featured performances of two conceptual pieces, "The Man" and "The Journey," which included early versions of songs that would later appear on their albums.',
-                'image' => null,
+                'image' => file_get_contents(storage_path('app/public/sample_image.jpg'));
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Pink Floyd'
+                'category_id' => 1
             ],
             [
                 'name' => 'Pink Floyd - Atom Heart Mother',
@@ -31,7 +31,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Pink Floyd'
+                'category_id' => 1
             ],
             [
                 'name' => 'Pink Floyd - Dark Side of the Moon',
@@ -41,7 +41,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Pink Floyd'
+                'category_id' => 1
             ],
             [
                 'name' => 'Pink Floyd - Wish You Were Here',
@@ -51,7 +51,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Pink Floyd'
+                'category_id' => 1
             ],
             [
                 'name' => 'Pink Floyd - In the Flesh',
@@ -61,7 +61,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Pink Floyd'
+                'category_id' => 1
             ],
             [
                 'name' => 'Pink Floyd - The Wall',
@@ -71,7 +71,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Pink Floyd'
+                'category_id' => 1
             ],
             [
                 'name' => 'Pink Floyd - The Division Bell',
@@ -81,7 +81,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Pink Floyd'
+                'category_id' => 1
             ],
             [
                 'name' => 'Metallica - Damage, Inc.',
@@ -91,7 +91,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Metallica'
+                'category_id' => 2
             ],
             [
                 'name' => 'Metallica - Damaged Justice',
@@ -101,7 +101,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Metallica'
+                'category_id' => 2
             ],
             [
                 'name' => 'Metallica - Wherever We May Roam',
@@ -111,7 +111,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Metallica'
+                'category_id' => 2
             ],
             [
                 'name' => 'Metallica - Madly in Anger with the World',
@@ -121,7 +121,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Metallica'
+                'category_id' => 2
             ],
             [
                 'name' => 'Metallica - World Magnetic',
@@ -131,7 +131,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Metallica'
+                'category_id' => 2
             ],
             [
                 'name' => 'Metallica - WorldWired',
@@ -141,7 +141,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Metallica'
+                'category_id' => 2
             ],
             [
                 'name' => 'Metallica - M72 World Tour',
@@ -151,7 +151,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Metallica'
+                'category_id' => 2
             ],
             [
                 'name' => 'Bob Marley - Catch a Fire',
@@ -161,7 +161,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Bob Marley'
+                'category_id' => 3
             ],
             [
                 'name' => 'Bob Marley - Burnin\'',
@@ -171,7 +171,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Bob Marley'
+                'category_id' => 3
             ],
             [
                 'name' => 'Bob Marley - Natty Dread',
@@ -181,7 +181,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Bob Marley'
+                'category_id' => 3
             ],
             [
                 'name' => 'Bob Marley - Rastaman Vibration',
@@ -191,7 +191,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Bob Marley'
+                'category_id' => 3
             ],
             [
                 'name' => 'Bob Marley - Exodus',
@@ -201,7 +201,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Bob Marley'
+                'category_id' => 3
             ],
             [
                 'name' => 'Bob Marley - Kaya',
@@ -211,7 +211,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Bob Marley'
+                'category_id' => 3
             ],
             [
                 'name' => 'Bob Marley - Uprising',
@@ -221,7 +221,7 @@ class EventsTableSeeder extends Seeder
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 'Bob Marley'
+                'category_id' => 3
             ]
         ]);
     }
