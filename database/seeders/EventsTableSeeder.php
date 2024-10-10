@@ -157,7 +157,7 @@ class EventsTableSeeder extends Seeder
                 'name' => 'Bob Marley - Catch a Fire',
                 'start_date' => '1973-04-27',
                 'end_date' => '1973-07-21',
-                'description' => 'This tour supported the album Catch a Fire and marked Bob Marley's first major international tour.',
+                'description' => 'This tour supported the album Catch a Fire and marked Bob Marley`s first major international tour.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
