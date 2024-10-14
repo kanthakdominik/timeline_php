@@ -12,216 +12,263 @@ class EventsTableSeeder extends Seeder
      */
     public function run(): void
     {
+
+        $sportCategoryId = DB::table('categories')->where('name', 'sportowa')->value('id');
+        $musicCategoryId = DB::table('categories')->where('name', 'muzyczna')->value('id');
+        $culturalCategoryId = DB::table('categories')->where('name', 'kulturalna')->value('id');
+        $educationCategoryId = DB::table('categories')->where('name', 'edukacyjna')->value('id');
+        $recreationCategoryId = DB::table('categories')->where('name', 'rekreacyjna')->value('id');
+
         DB::table('events')->insert([
             [
-                'name' => 'Pink Floyd - The Man and The Journey',
-                'start_date' => '1969-04-14',
-                'end_date' => '1969-10-17',
-                'description' => 'This tour featured performances of two conceptual pieces, "The Man" and "The Journey," which included early versions of songs that would later appear on their albums.',
-                'image' => file_get_contents(storage_path('app/public/sample_image.jpg'));
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 1
-            ],
-            [
-                'name' => 'Pink Floyd - Atom Heart Mother',
-                'start_date' => '1970-01-17',
-                'end_date' => '1971-11-20',
-                'description' => 'Supporting the album Atom Heart Mother, this tour included elaborate live performances with orchestral and choir arrangements.',
+                'name' => 'Mistrzostwa Polski w Piłce Nożnej',
+                'start_date' => '2024-03-10',
+                'end_date' => '2024-03-17',
+                'description' => 'Najlepsze drużyny piłkarskie z całego kraju rywalizują o tytuł mistrza Polski. Niezapomniane emocje i zacięta walka na boisku. Kibice mogą liczyć na wiele emocjonujących momentów i niespodziewane zwroty akcji.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 1
+                'category_id' => $sportCategoryId
             ],
             [
-                'name' => 'Pink Floyd - Dark Side of the Moon',
-                'start_date' => '1972-01-20',
-                'end_date' => '1973-12-09',
-                'description' => 'This tour supported the iconic album The Dark Side of the Moon, featuring the complete album played live with advanced lighting and sound effects.',
+                'name' => 'Superliga Siatkarska',
+                'start_date' => '2024-04-10',
+                'end_date' => '2024-04-12',
+                'description' => 'Najlepsze drużyny siatkarskie walczą w ekscytujących meczach o tytuł mistrza Superligi. Dynamiczne akcje i wspaniała atmosfera na arenie. Turniej przyciąga fanów z całego kraju, którzy dopingują swoje drużyny.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 1
+                'category_id' => $sportCategoryId
             ],
             [
-                'name' => 'Pink Floyd - Wish You Were Here',
-                'start_date' => '1975-04-08',
-                'end_date' => '1975-07-05',
-                'description' => 'This tour promoted the album Wish You Were Here and included performances of the entire album along with other classic tracks.',
+                'name' => 'Warszawski Maraton',
+                'start_date' => '2024-06-10',
+                'end_date' => '2024-06-12',
+                'description' => 'Maraton przez serce stolicy, kończący się na Stadionie Narodowym. Idealne wydarzenie dla miłośników biegania i sportowych wyzwań. Uczestnicy mogą cieszyć się nie tylko sportem, ale również pięknymi widokami Warszawy.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 1
+                'category_id' => $sportCategoryId
             ],
             [
-                'name' => 'Pink Floyd - In the Flesh',
-                'start_date' => '1977-01-23',
-                'end_date' => '1977-07-06',
-                'description' => 'Supporting the album Animals, this tour was known for its elaborate stage setups and the use of large inflatable animals.',
+                'name' => 'Lekkoatletyczne Mistrzostwa Polski',
+                'start_date' => '2024-07-20',
+                'end_date' => '2024-07-22',
+                'description' => 'Zawody lekkoatletyczne z udziałem najlepszych polskich sportowców, rywalizujących w różnych dyscyplinach. Emocje i rekordy na najwyższym poziomie. Impreza przyciąga kibiców zainteresowanych różnorodnymi konkurencjami.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 1
+                'category_id' => $sportCategoryId
             ],
             [
-                'name' => 'Pink Floyd - The Wall',
-                'start_date' => '1980-02-07',
-                'end_date' => '1981-06-17',
-                'description' => 'This tour featured the live performance of the entire The Wall album, with elaborate stage designs including the construction of a wall on stage.',
+                'name' => 'Nocny Bieg na Orientację',
+                'start_date' => '2024-09-25',
+                'end_date' => '2024-09-26',
+                'description' => 'Wyjątkowe wydarzenie, które łączy bieg z orientacją terenową po zmroku. Uczestnicy korzystają z map i kompasów, aby dotrzeć do wyznaczonych punktów kontrolnych. Niezapomniana przygoda dla wszystkich miłośników aktywności na świeżym powietrzu.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 1
+                'category_id' => $sportCategoryId
             ],
             [
-                'name' => 'Pink Floyd - The Division Bell',
-                'start_date' => '1994-03-30',
-                'end_date' => '1994-10-29',
-                'description' => 'Supporting the album The Division Bell, this tour was known for its impressive light shows and stage effects.',
+                'name' => 'Festiwal Muzyki Filmowej',
+                'start_date' => '2024-02-05',
+                'end_date' => '2024-02-06',
+                'description' => 'Koncerty orkiestr symfonicznych, wykonujących znane utwory filmowe. Niezapomniana podróż przez świat muzyki filmowej. Idealne wydarzenie dla miłośników kina i muzyki.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 1
+                'category_id' => $musicCategoryId
             ],
             [
-                'name' => 'Metallica - Damage, Inc.',
-                'start_date' => '1986-03-27',
-                'end_date' => '1987-02-13',
-                'description' => 'This tour supported the album Master of Puppets and was notable for its intense performances and the tragic death of bassist Cliff Burton.',
+                'name' => 'Koncert Gwiazd Rocka',
+                'start_date' => '2024-05-15',
+                'end_date' => '2024-05-16',
+                'description' => 'Wieczór pełen niezapomnianych rockowych hitów w wykonaniu największych gwiazd muzyki rockowej. Energia na najwyższym poziomie. Koncert przyciąga tłumy fanów gotowych na świetną zabawę.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 2
+                'category_id' => $musicCategoryId
             ],
             [
-                'name' => 'Metallica - Damaged Justice',
-                'start_date' => '1988-09-11',
-                'end_date' => '1989-10-08',
-                'description' => 'Supporting the album ...And Justice for All, this tour featured elaborate stage setups and was one of their longest tours.',
+                'name' => 'Festiwal Jazzowy',
+                'start_date' => '2024-07-10',
+                'end_date' => '2024-07-12',
+                'description' => 'Trzydniowy festiwal, podczas którego występują najwybitniejsi jazzowi muzycy z całego świata. Niezapomniane występy i wyjątkowa atmosfera. Fani jazzu mogą liczyć na niezapomniane wrażenia muzyczne.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 2
+                'category_id' => $musicCategoryId
             ],
             [
-                'name' => 'Metallica - Wherever We May Roam',
-                'start_date' => '1991-08-01',
-                'end_date' => '1992-12-18',
-                'description' => 'This tour supported the self-titled album Metallica (The Black Album) and included extensive worldwide performances.',
+                'name' => 'Koncert Muzyki Klasycznej',
+                'start_date' => '2024-08-25',
+                'end_date' => '2024-08-26',
+                'description' => 'Wyjątkowy wieczór, gdzie najlepsze orkiestry wykonują dzieła klasyczne na najwyższym poziomie artystycznym. Klasyka w najlepszym wydaniu. Idealne wydarzenie dla miłośników muzyki poważnej.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 2
+                'category_id' => $musicCategoryId
             ],
             [
-                'name' => 'Metallica - Madly in Anger with the World',
-                'start_date' => '2003-11-06',
-                'end_date' => '2004-11-28',
-                'description' => 'Supporting the album St. Anger, this tour featured aggressive performances and a raw, stripped-down stage setup.',
+                'name' => 'Festiwal Muzyki Elektronicznej',
+                'start_date' => '2024-10-15',
+                'end_date' => '2024-10-17',
+                'description' => 'Energetyczne występy znanych DJ-ów i producentów muzyki elektronicznej, gwarantujące niezapomnianą noc pełną tańca. Idealne wydarzenie dla miłośników klubowej atmosfery. Niezapomniane przeżycie dla wszystkich uczestników.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 2
+                'category_id' => $musicCategoryId
             ],
             [
-                'name' => 'Metallica - World Magnetic',
-                'start_date' => '2008-10-21',
-                'end_date' => '2010-11-21',
-                'description' => 'This tour supported the album Death Magnetic and included extensive performances across the globe.',
+                'name' => 'Międzynarodowy Festiwal Teatralny',
+                'start_date' => '2024-03-20',
+                'end_date' => '2024-03-22',
+                'description' => 'Przedstawienia teatralne z całego świata, ukazujące różnorodność kultur i tradycji scenicznych. Wyjątkowe spektakle na najwyższym poziomie. Festiwal przyciąga miłośników teatru i sztuki scenicznej.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 2
+                'category_id' => $culturalCategoryId
             ],
             [
-                'name' => 'Metallica - WorldWired',
-                'start_date' => '2016-02-06',
-                'end_date' => '2019-08-25',
-                'description' => 'Supporting the album Hardwired... to Self-Destruct, this tour featured innovative stage designs and extensive use of video screens.',
+                'name' => 'Festiwal Sztuki Współczesnej',
+                'start_date' => '2024-04-05',
+                'end_date' => '2024-04-07',
+                'description' => 'Wystawy, instalacje artystyczne i performance\'y, prezentujące najnowsze trendy w sztuce współczesnej. Inspirujące spotkania ze sztuką. Idealne wydarzenie dla miłośników nowoczesnej twórczości.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 2
+                'category_id' => $culturalCategoryId
             ],
             [
-                'name' => 'Metallica - M72 World Tour',
-                'start_date' => '2023-04-27',
+                'name' => 'Dni Kultury Ludowej',
+                'start_date' => '2024-06-10',
+                'end_date' => '2024-06-12',
+                'description' => 'Występy zespołów ludowych, warsztaty rzemiosła i degustacje tradycyjnych potraw z różnych regionów Polski. Barwne i pełne emocji wydarzenie. Świetna okazja do zapoznania się z bogatą kulturą ludową.',
+                'image' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => $culturalCategoryId
+            ],
+            [
+                'name' => 'Festiwal Filmowy',
+                'start_date' => '2024-09-01',
+                'end_date' => '2024-09-03',
+                'description' => 'Projekcje filmów fabularnych, dokumentalnych i krótkometrażowych z całego świata, zakończone galą wręczenia nagród. Kino na najwyższym poziomie. Święto dla miłośników kina i twórczości filmowej.',
+                'image' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => $culturalCategoryId
+            ],
+            [
+                'name' => 'Noc Muzeów',
+                'start_date' => '2024-11-10',
+                'end_date' => '2024-11-11',
+                'description' => 'Wyjątkowa noc, podczas której muzea i galerie sztuki otwarte są dla zwiedzających do późnych godzin nocnych, oferując specjalne wystawy i wydarzenia. Idealna okazja do odkrywania kultury i historii. Niezapomniane przeżycia dla wszystkich uczestników.',
+                'image' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => $culturalCategoryId
+            ],
+            [
+                'name' => 'Kongres Naukowy',
+                'start_date' => '2024-01-10',
+                'end_date' => '2024-01-12',
+                'description' => 'Spotkanie naukowców z różnych dziedzin, prezentujące najnowsze osiągnięcia i badania. Wykłady, panele dyskusyjne i warsztaty. Idealna okazja do wymiany wiedzy i doświadczeń.',
+                'image' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => $educationCategoryId
+            ],
+            [
+                'name' => 'Konferencja Technologiczna',
+                'start_date' => '2024-05-05',
+                'end_date' => '2024-05-07',
+                'description' => 'Wydarzenie skupiające ekspertów technologii, prezentujących innowacyjne rozwiązania i trendy w dziedzinie IT i technologii. Wykłady i prezentacje. Świetna okazja do poznania najnowszych osiągnięć w świecie technologii.',
+                'image' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => $educationCategoryId
+            ],
+            [
+                'name' => 'Warsztaty Literackie',
+                'start_date' => '2024-07-20',
+                'end_date' => '2024-07-22',
+                'description' => 'Trzydniowe warsztaty dla pisarzy i poetów, prowadzone przez znanych autorów, z możliwością prezentacji własnych prac. Inspirujące spotkania i twórcza atmosfera. Idealne wydarzenie dla miłośników literatury.',
+                'image' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => $educationCategoryId
+            ],
+            [
+                'name' => 'Seminarium Zdrowia Publicznego',
+                'start_date' => '2024-09-01',
+                'end_date' => '2024-09-03',
+                'description' => 'Wykłady i panele dyskusyjne na temat zdrowia publicznego, profilaktyki chorób i promocji zdrowego stylu życia. Spotkania z ekspertami. Ważne wydarzenie dla wszystkich zainteresowanych zdrowiem publicznym.',
+                'image' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'category_id' => $educationCategoryId
+            ],
+            [
+                'name' => 'Festiwal Nauki',
+                'start_date' => '2024-11-10',
                 'end_date' => '2024-11-12',
-                'description' => 'This tour supports the album 72 Seasons and features a unique "No Repeat Weekend" format with different setlists each night.',
+                'description' => 'Interaktywne stoiska, pokazy naukowe i warsztaty edukacyjne dla dzieci i dorosłych, promujące naukę i technologię. Fascynujące prezentacje. Idealna okazja do zgłębienia tajemnic nauki.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 2
+                'category_id' => $educationCategoryId
             ],
             [
-                'name' => 'Bob Marley - Catch a Fire',
-                'start_date' => '1973-04-27',
-                'end_date' => '1973-07-21',
-                'description' => 'This tour supported the album Catch a Fire and marked Bob Marley`s first major international tour.',
+                'name' => 'Festiwal Rowerowy',
+                'start_date' => '2024-04-01',
+                'end_date' => '2024-04-03',
+                'description' => 'Zawody rowerowe, pokazy akrobacji i warsztaty dla miłośników jazdy na rowerze. Idealne wydarzenie dla rodzin i aktywnych osób. Uczestnicy mogą liczyć na pełne emocji dni pełne sportowych wrażeń.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 3
+                'category_id' => $recreationCategoryId
             ],
             [
-                'name' => 'Bob Marley - Burnin\'',
-                'start_date' => '1973-10-25',
-                'end_date' => '1973-11-30',
-                'description' => 'Supporting the album Burnin\', this tour included performances in the UK and the US.',
+                'name' => 'Bieg Charytatywny',
+                'start_date' => '2024-06-14',
+                'end_date' => '2024-06-15',
+                'description' => 'Bieg na różnych dystansach, mający na celu zbiórkę funduszy na cele charytatywne. Uczestnicy mogą biegać, spacerować lub nordic walking. Wydarzenie promuje zdrowy styl życia i wspieranie potrzebujących.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 3
+                'category_id' => $recreationCategoryId
             ],
             [
-                'name' => 'Bob Marley - Natty Dread',
-                'start_date' => '1975-06-06',
-                'end_date' => '1975-07-20',
-                'description' => 'This tour supported the album Natty Dread and included Marley`s first performance at the Lyceum Theatre in London.',
+                'name' => 'Piknik Rodzinny',
+                'start_date' => '2024-07-24',
+                'end_date' => '2024-07-25',
+                'description' => 'Wydarzenie pełne atrakcji dla całej rodziny, z grami, konkursami, występami artystycznymi i strefą gastronomiczną. Idealna okazja do spędzenia czasu z bliskimi na świeżym powietrzu. Zapewnia niezapomniane wspomnienia dla uczestników w każdym wieku.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 3
+                'category_id' => $recreationCategoryId
             ],
             [
-                'name' => 'Bob Marley - Rastaman Vibration',
-                'start_date' => '1976-04-23',
-                'end_date' => '1976-07-18',
-                'description' => 'Supporting the album Rastaman Vibration, this tour included performances in Europe and the US.',
+                'name' => 'Zlot Miłośników Motoryzacji',
+                'start_date' => '2024-09-20',
+                'end_date' => '2024-09-22',
+                'description' => 'Spotkanie fanów motoryzacji, z pokazami samochodów zabytkowych, wyścigami i warsztatami z mechaniki i tuningu. Wydarzenie dla wszystkich entuzjastów motoryzacji i technologii. Wspaniała okazja do zobaczenia unikalnych pojazdów.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 3
+                'category_id' => $recreationCategoryId
             ],
             [
-                'name' => 'Bob Marley - Exodus',
-                'start_date' => '1977-05-10',
-                'end_date' => '1978-06-08',
-                'description' => 'This tour supported the album Exodus and included iconic performances in Europe and the US.',
+                'name' => 'Festiwal Fitness',
+                'start_date' => '2024-12-10',
+                'end_date' => '2024-12-12',
+                'description' => 'Całodniowe wydarzenie pełne zajęć fitness, warsztatów zdrowego stylu życia i pokazów sportowych. Idealne dla tych, którzy chcą zadbać o swoją formę i zdrowie. Uczestnicy mogą liczyć na profesjonalne porady trenerów i inspirację do aktywnego życia.',
                 'image' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'category_id' => 3
-            ],
-            [
-                'name' => 'Bob Marley - Kaya',
-                'start_date' => '1978-05-18',
-                'end_date' => '1978-08-05',
-                'description' => 'Supporting the album Kaya, this tour included performances in Europe and the US.',
-                'image' => null,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 3
-            ],
-            [
-                'name' => 'Bob Marley - Uprising',
-                'start_date' => '1980-05-30',
-                'end_date' => '1980-09-23',
-                'description' => 'This tour supported the album Uprising and was Marley`s final tour before his passing in 1981.',
-                'image' => null,
-                'created_at' => now(),
-                'updated_at' => now(),
-                'category_id' => 3
+                'category_id' => $recreationCategoryId
             ]
         ]);
     }

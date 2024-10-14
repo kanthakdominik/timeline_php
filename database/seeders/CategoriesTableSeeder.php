@@ -13,10 +13,11 @@ class CategoriesTableSeeder extends Seeder
     public function run(): void
     {
         DB::table('categories')->insert([
-            ['id' => 1, 'name' => 'Pink Floyd', 'color' => 'Pink', 'image' => null, 'created_at' => now(), 'updated_at' => now()],
-            ['id' => 2, 'name' => 'Metallica', 'color' => 'Black', 'image' => null, 'created_at' => now(), 'updated_at' => now()],
-            ['id' => 3, 'name' => 'Bob Marley', 'color' => 'Green', 'image' => null, 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'sportowa', 'color' => '#6cb8a6', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'muzyczna', 'color' => '#e6dcbd', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'kulturalna', 'color' => '#bcbfc8', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'edukacyjna', 'color' => '#ffa07a', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'rekreacyjna', 'color' => '#a5cde9', 'created_at' => now(), 'updated_at' => now()]
         ]);
     }
 }
-

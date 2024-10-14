@@ -14,7 +14,6 @@ return new class extends Migration
             $table->id();
             $table->string('name', 50)->unique();
             $table->string('color', 50)->nullable();
-            $table->binary('image')->nullable();
             $table->timestamps();
         });
     }

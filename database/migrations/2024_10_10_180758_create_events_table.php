@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->text('description')->nullable();
-            $table->binary('image')->nullable();
+            $table->mediumText('image')->charset('binary')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('category_id')->nullable();
 
