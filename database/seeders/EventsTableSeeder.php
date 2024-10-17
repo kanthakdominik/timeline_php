@@ -41,10 +41,10 @@ class EventsTableSeeder extends Seeder
                 'category_id' => $sportCategoryId
             ],
             [
-                'name' => 'Warszawski Maraton',
-                'start_date' => '2024-06-10',
-                'end_date' => '2024-06-12',
-                'description' => 'Maraton przez serce stolicy, kończący się na Stadionie Narodowym. Idealne wydarzenie dla miłośników biegania i sportowych wyzwań. Uczestnicy mogą cieszyć się nie tylko sportem, ale również pięknymi widokami Warszawy.',
+                'name' => 'Wiosenny Maraton',
+                'start_date' => '2024-05-24',
+                'end_date' => '2024-05-24',
+                'description' => 'Coroczny bieg przyciągający miłośników sportu z całego kraju. Trasa prowadzi przez najpiękniejsze zakątki miasta, umożliwiając podziwianie wiosennych krajobrazów. To doskonała okazja, aby sprawdzić swoją kondycję i cieszyć się świeżym powietrzem oraz wyjątkową atmosferą zawodów.',
                 'image' => file_get_contents(storage_path('app/public/logos/3.png')),
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -52,8 +52,8 @@ class EventsTableSeeder extends Seeder
             ],
             [
                 'name' => 'Lekkoatletyczne Mistrzostwa Polski',
-                'start_date' => '2024-07-20',
-                'end_date' => '2024-07-22',
+                'start_date' => '2024-07-14',
+                'end_date' => '2024-07-19',
                 'description' => 'Zawody lekkoatletyczne z udziałem najlepszych polskich sportowców, rywalizujących w różnych dyscyplinach. Emocje i rekordy na najwyższym poziomie. Impreza przyciąga kibiców zainteresowanych różnorodnymi konkurencjami.',
                 'image' => file_get_contents(storage_path('app/public/logos/4.png')),
                 'created_at' => now(),
@@ -202,8 +202,8 @@ class EventsTableSeeder extends Seeder
             ],
             [
                 'name' => 'Seminarium Zdrowia Publicznego',
-                'start_date' => '2024-09-01',
-                'end_date' => '2024-09-03',
+                'start_date' => '2024-09-15',
+                'end_date' => '2024-09-18',
                 'description' => 'Wykłady i panele dyskusyjne na temat zdrowia publicznego, profilaktyki chorób i promocji zdrowego stylu życia. Spotkania z ekspertami. Ważne wydarzenie dla wszystkich zainteresowanych zdrowiem publicznym.',
                 'image' => file_get_contents(storage_path(path: 'app/public/logos/19.png')),
                 'created_at' => now(),
@@ -212,8 +212,8 @@ class EventsTableSeeder extends Seeder
             ],
             [
                 'name' => 'Festiwal Nauki Dla Dzieci',
-                'start_date' => '2024-11-10',
-                'end_date' => '2024-11-12',
+                'start_date' => '2024-11-24',
+                'end_date' => '2024-11-26',
                 'description' => 'Interaktywne stoiska, pokazy naukowe i warsztaty edukacyjne dla dzieci i dorosłych, promujące naukę i technologię. Fascynujące prezentacje. Idealna okazja do zgłębienia tajemnic nauki.',
                 'image' => file_get_contents(storage_path(path: 'app/public/logos/20.png')),
                 'created_at' => now(),
@@ -243,7 +243,7 @@ class EventsTableSeeder extends Seeder
             [
                 'name' => 'Piknik Rodzinny',
                 'start_date' => '2024-07-24',
-                'end_date' => '2024-07-25',
+                'end_date' => '2024-07-24',
                 'description' => 'Wydarzenie pełne atrakcji dla całej rodziny, z grami, konkursami, występami artystycznymi i strefą gastronomiczną. Idealna okazja do spędzenia czasu z bliskimi na świeżym powietrzu. Zapewnia niezapomniane wspomnienia dla uczestników w każdym wieku.',
                 'image' => file_get_contents(storage_path(path: 'app/public/logos/23.png')),
                 'created_at' => now(),

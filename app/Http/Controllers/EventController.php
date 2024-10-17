@@ -12,7 +12,9 @@ class EventController extends Controller
      */
     public function index()
     {
-      
+        $events = Event::orderBy('start_date')->get();
+        // return response()->json($events);
+        return view('welcome', compact('events'));
     }
 
     /**
@@ -28,7 +30,14 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-       
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'date' => 'required|date',
+        ]);
+
+        $event = Event::create($validatedData);
+        return response()->json($event, 201);
     }
 
     /**
@@ -36,7 +45,8 @@ class EventController extends Controller
      */
     public function show(string $id)
     {
-        return view('events.show', compact('event'));
+        $event = Event::findOrFail($id);
+        return response()->json($event);
     }
 
     /**
@@ -52,13 +62,31 @@ class EventController extends Controller
      */
     public function update(Request $request, string $id)
     {
-            }
+        $validatedData = $request->validate([
+            'name' => 'sometimes|required|string|max:255',
+            'description' => 'nullable|string',
+            'date' => 'sometimes|required|date',
+        ]);
+
+        $event = Event::findOrFail($id);
+        $event->update($validatedData);
+        return response()->json($event);
+    }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-       
+        $event = Event::findOrFail($id);
+        $event->delete();
+        return response()->json(null, 204);
+    }
+
+    public function showImage($id)
+    {
+        $event = Event::find($id);
+        $imageData = base64_encode($event->image); // Assuming 'image' is the BLOB field
+        return view('event.show', compact('event', 'imageData'));
     }
 }
