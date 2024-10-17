@@ -13,7 +13,9 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::orderBy('start_date')->get();
-        // return response()->json($events);
+        foreach ($events as $event) {
+            $event->image = base64_encode($event->image);
+        }
         return view('welcome', compact('events'));
     }
 

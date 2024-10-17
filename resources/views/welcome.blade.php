@@ -91,6 +91,10 @@
       left: -14px;
     }
 
+    .element-hidden {
+        display: none;
+    }
+
     /* Media queries - Responsive timeline on screens less than 600px wide */
     @media screen and (max-width: 600px) {
 
@@ -137,59 +141,33 @@
   <section style="background-color: #F0F2F5;">
     <div class="container py-5">
       <div class="main-timeline-2">
-
-      @foreach($events as $event)
-        <div class="timeline-2 {{ $loop->index % 2 == 0 ? 'left-2' : 'right-2' }}">
-            <div class="card">
-              <img src="{{ $event->image }}" class="card-img-top" alt="Logo">
-              <div class="card-body p-4">
-                <h4 class="fw-bold mb-4">{{ $event->name }}</h4>
-                <p class="text-muted mb-4"><i class="far fa-clock" aria-hidden="true"></i> {{ $event->start_date }} - {{ $event->end_date }}</p>
-                <p class="mb-0">{{ $event->description }}</p>
+        @foreach($events as $event)
+          <div class="timeline-2 {{ $loop->index % 2 == 0 ? 'left-2' : 'right-2' }}">
+              <div class="card" >
+                <img src="data:image/png;base64,{{ $event->image }}" class="card-img-top element-hidden" alt="{{ $event->name }} Logo">
+                <div class="card-body p-4">
+                  <h4 class="fw-bold mb-4">{{ $event->name }}</h4>
+                  <p class="text-muted mb-4"><i class="far fa-clock" aria-hidden="true"></i> {{ $event->start_date }} - {{ $event->end_date }}</p>
+                  <p class="mb-0 element-hidden">{{ $event->description }}</p>
+                </div>
               </div>
-            </div>
-        </div>
-      @endforeach
-        <!-- <div class="timeline-2 left-2">
-          <div class="card">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(135).webp" class="card-img-top"
-              alt="Responsive image">
-            <div class="card-body p-4">
-              <h4 class="fw-bold mb-4">Ut enim ad minim veniam</h4>
-              <p class="text-muted mb-4"><i class="far fa-clock" aria-hidden="true"></i> 2017</p>
-              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
           </div>
-        </div> -->
-
-
-        <!-- <div class="timeline-2 right-2">
-          <div class="card">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(129).webp" class="card-img-top"
-              alt="Responsive image">
-            <div class="card-body p-4">
-              <h4 class="fw-bold mb-4">Duis aute irure dolor</h4>
-              <p class="text-muted mb-4"><i class="far fa-clock" aria-hidden="true"></i> 2016</p>
-              <p class="mb-0">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
-                quasi
-                architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-                sit
-                aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-                voluptatem
-                sequi nesciunt.</p>
-            </div>
-          </div>
-        </div> -->
-
-
+        @endforeach
       </div>
     </div>
   </section>
+  <script>
+       document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.card').forEach(function(card) {
+                card.addEventListener('click', function() {
+                    const elementsToToggle = card.querySelectorAll('.element-hidden');
+                    elementsToToggle.forEach(function(element) {
+                        element.style.display = element.style.display === 'none' ? 'block' : 'none';
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
