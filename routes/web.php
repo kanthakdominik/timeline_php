@@ -3,12 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', [EventController::class, 'index']);
+// Route::get('/categories', [CategoryController::class, 'index']);
 
 Route::resource('/events', EventController::class);
 

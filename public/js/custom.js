@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
             elementsToToggle.forEach(function(element) {
                 element.style.display = element.style.display === 'none' ? 'block' : 'none';
             });
+
+            const elementsToToggle2 = card.querySelectorAll('.click-me');
+            elementsToToggle2.forEach(function(element) {
+                element.style.display = element.style.display === 'block' ? 'none' : 'block';
+            });
         });
     });
 });

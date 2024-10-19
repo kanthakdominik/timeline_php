@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -12,11 +13,12 @@ class EventController extends Controller
      */
     public function index()
     {
+        $categories = Category::all();
         $events = Event::orderBy('start_date')->get();
         foreach ($events as $event) {
             $event->image = base64_encode($event->image);
         }
-        return view('welcome', compact('events'));
+        return view('welcome', compact('events', 'categories'));
     }
 
     /**
@@ -37,12 +39,6 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    // public function show(string $id)
-    // {
-    //     $event = Event::findOrFail($id);
-    //     return response()->json($event);
-    // }
-
     public function show(Event $event)
     {
         $event->image = base64_encode($event->image);
@@ -54,24 +50,23 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'description' => 'required|string',
-        'start_date' => 'required|date',
-        'end_date' => 'required|date',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    ]);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-    $data = $request->all();
+        $data = $request->all();
 
-    if ($request->hasFile('image')) {
-        // Read the image file and convert it to base64
-        $image = file_get_contents($request->file('image')->getRealPath());
-        $data['image'] = $image;
-    }
+        if ($request->hasFile('image')) {
+            $image = file_get_contents($request->file('image')->getRealPath());
+            $data['image'] = $image;
+        }
 
-    $event->update($data);
-    return redirect()->route('events.index')->with('success', 'Event updated successfully');
+        $event->update($data);
+        return redirect()->route('events.index')->with('success', 'Event updated successfully');
     }
 
     /**
