@@ -20,14 +20,6 @@ class EventController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -45,34 +37,41 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        $event = Event::findOrFail($id);
-        return response()->json($event);
-    }
+    // public function show(string $id)
+    // {
+    //     $event = Event::findOrFail($id);
+    //     return response()->json($event);
+    // }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function show(Event $event)
     {
-       
+        $event->image = base64_encode($event->image);
+        return response()->json($event);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Event $event)
     {
-        $validatedData = $request->validate([
-            'name' => 'sometimes|required|string|max:255',
-            'description' => 'nullable|string',
-            'date' => 'sometimes|required|date',
-        ]);
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'start_date' => 'required|date',
+        'end_date' => 'required|date',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
 
-        $event = Event::findOrFail($id);
-        $event->update($validatedData);
-        return response()->json($event);
+    $data = $request->all();
+
+    if ($request->hasFile('image')) {
+        // Read the image file and convert it to base64
+        $image = file_get_contents($request->file('image')->getRealPath());
+        $data['image'] = $image;
+    }
+
+    $event->update($data);
+    return redirect()->route('events.index')->with('success', 'Event updated successfully');
     }
 
     /**
