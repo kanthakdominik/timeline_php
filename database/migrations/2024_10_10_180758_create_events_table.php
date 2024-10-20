@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->mediumText('image')->charset('binary')->nullable();
             $table->timestamps();
-            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('category_id');
 
             $table->foreign('category_id')->references('id')->on('categories');
         });

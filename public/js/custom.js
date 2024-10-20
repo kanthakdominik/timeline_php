@@ -1,18 +1,32 @@
-function openEditModal(eventId) {
-    // Fetch event data and populate the form
-    fetch(`/events/${eventId}`)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('eventId').value = data.id;
-            document.getElementById('eventName').value = data.name;
-            document.getElementById('eventDescription').value = data.description;
-            document.getElementById('eventStartDate').value = data.start_date;
-            document.getElementById('eventEndDate').value = data.end_date;
-            document.getElementById('eventCategory').value = event.category_id;
-            document.getElementById('editEventForm').action = `/events/${data.id}`;
-            new bootstrap.Modal(document.getElementById('editModal')).show();
-        });
-}
+document.addEventListener('DOMContentLoaded', function () {
+    function openEditModal(eventId) {
+        const event = events.find(event => event.id === eventId);
+
+        if (!event) {
+            console.error('Event not found');
+            return;
+        }
+
+        const form = document.getElementById('editEventForm');
+        form.action = `/events/${eventId}`;
+
+        document.getElementById('eventId').value = event.id;
+        document.getElementById('eventName').value = event.name;
+        document.getElementById('eventDescription').value = event.description;
+        document.getElementById('eventStartDate').value = event.start_date;
+        document.getElementById('eventEndDate').value = event.end_date;
+        document.getElementById('eventCategory').value = event.category_id;
+
+        const editModal = new bootstrap.Modal(document.getElementById('editModal'));
+        editModal.show();
+    }
+    window.openEditModal = openEditModal;
+
+    if (document.querySelector('.modal.show')) {
+        const addEventModal = new bootstrap.Modal(document.getElementById('addEventModal'));
+        addEventModal.show();
+    }
+});
 
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.card').forEach(function(card) {
@@ -41,12 +55,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const categoryId = this.getAttribute('data-category-id');
 
             if (activeCategoryId === categoryId) {
-                // Reset filter
                 activeCategoryId = null;
                 this.classList.remove('active');
                 eventItems.forEach(item => item.style.display = 'block');
             } else {
-                // Apply filter
                 activeCategoryId = categoryId;
                 categoryButtons.forEach(btn => btn.classList.remove('active'));
                 this.classList.add('active');
