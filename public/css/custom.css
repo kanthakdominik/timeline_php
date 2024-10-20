@@ -136,3 +136,7 @@
   .filter-bar button {
     margin-right: 5px;
   }
+
+  .category-btn.active {
+    border: 2px solid #000;
+}

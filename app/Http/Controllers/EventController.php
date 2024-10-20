@@ -14,7 +14,7 @@ class EventController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $events = Event::orderBy('start_date')->get();
+        $events = Event::with('category')->orderBy('start_date')->get();
         foreach ($events as $event) {
             $event->image = base64_encode($event->image);
         }
@@ -26,14 +26,25 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'date' => 'required|date',
+            'description' => 'required|string',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
-        $event = Event::create($validatedData);
-        return response()->json($event, 201);
+        $data = $request->all();
+
+        if ($request->hasFile('image')) {
+            $image = file_get_contents($request->file('image')->getRealPath());
+            $data['image'] = $image;
+        }
+
+        Event::create($data);
+
+        return redirect()->route('events.index')->with('success', 'Event created successfully');
     }
 
     /**
@@ -56,6 +67,7 @@ class EventController extends Controller
             'start_date' => 'required|date',
             'end_date' => 'required|date',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         $data = $request->all();
@@ -76,7 +88,8 @@ class EventController extends Controller
     {
         $event = Event::findOrFail($id);
         $event->delete();
-        return response()->json(null, 204);
+        return redirect()->route('home')->with('success', 'Event deleted successfully.');
+
     }
 
     public function showImage($id)

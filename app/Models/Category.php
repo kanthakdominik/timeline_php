@@ -18,4 +18,9 @@ class Category extends Model
         'name',
         'color',
     ];
+
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
 }

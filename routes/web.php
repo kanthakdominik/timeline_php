@@ -5,7 +5,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 
-Route::get('/', [EventController::class, 'index']);
+Route::get('/', [EventController::class, 'index'])->name('home');
 // Route::get('/categories', [CategoryController::class, 'index']);
 
 Route::resource('/events', EventController::class);
