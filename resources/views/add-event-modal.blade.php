@@ -1,4 +1,4 @@
-<div class="modal fade @if ($errors->any()) show @endif" id="addEventModal" tabindex="-1" aria-labelledby="addEventModalLabel" aria-hidden="true" @if ($errors->any()) style="display: block;" @endif>
+<div class="modal fade @if ($errors->hasBag('addEvent')) show @endif" id="addEventModal" tabindex="-1" aria-labelledby="addEventModalLabel" aria-hidden="true" @if ($errors->hasBag('addEvent')) style="display: block;" @endif>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -11,35 +11,35 @@
           <div class="mb-3">
             <label for="newEventName" class="form-label">Nazwa</label>
             <input type="text" class="form-control" id="newEventName" name="name" value="{{ old('name') }}" required>
-            @error('name')
+            @error('name', 'addEvent')
               <div class="text-danger">{{ $message }}</div>
             @enderror
           </div>
           <div class="mb-3">
             <label for="newEventDescription" class="form-label">Opis</label>
             <textarea class="form-control" id="newEventDescription" name="description" rows="3">{{ old('description') }}</textarea>
-            @error('description')
+            @error('description', 'addEvent')
               <div class="text-danger">{{ $message }}</div>
             @enderror
           </div>
           <div class="mb-3">
             <label for="newEventStartDate" class="form-label">Data rozpoczęcia</label>
             <input type="date" class="form-control" id="newEventStartDate" name="start_date" value="{{ old('start_date') }}" required>
-            @error('start_date')
+            @error('start_date', 'addEvent')
               <div class="text-danger">{{ $message }}</div>
             @enderror
           </div>
           <div class="mb-3">
             <label for="newEventEndDate" class="form-label">Data zakończenia</label>
             <input type="date" class="form-control" id="newEventEndDate" name="end_date" value="{{ old('end_date') }}" required>
-            @error('end_date')
+            @error('end_date', 'addEvent')
               <div class="text-danger">{{ $message }}</div>
             @enderror
           </div>
           <div class="mb-3">
             <label for="newEventImage" class="form-label">Logo</label>
             <input type="file" class="form-control" id="newEventImage" name="image">
-            @error('image')
+            @error('image', 'addEvent')
               <div class="text-danger">{{ $message }}</div>
             @enderror
           </div>
@@ -50,7 +50,7 @@
                 <option value="{{ $category->id }}" @if (old('category_id') == $category->id) selected @endif>{{ $category->name }}</option>
               @endforeach
             </select>
-            @error('category_id')
+            @error('category_id', 'addEvent')
               <div class="text-danger">{{ $message }}</div>
             @enderror
           </div>

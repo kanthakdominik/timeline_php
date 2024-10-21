@@ -26,11 +26,11 @@
 
   </section>
 
-  @include('edit-modal')
+  @include('edit-event-modal')
   @include('add-event-modal')
 
   <script>
-    const events = @json($events); // Pass events data to JavaScript
+    const events = @json($events);
   </script>
 
 </body>

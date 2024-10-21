@@ -17,7 +17,7 @@
                         </div>
                         <span class="click-me">Rozwiń</span>
                     </div>
-                    <button class="btn btn-outline-primary mt-3" onclick="openEditModal({{ $event->id }})">Edytuj</button>
+                    <button class="btn btn-outline-primary mt-3" type="button" onclick="openEditModal({{ $event->id }})">Edytuj</button>
                     <form action="{{ route('events.destroy', $event->id) }}" method="POST" class="d-inline"
                         onsubmit="return confirm('Are you sure you want to delete this event?');">
                         @csrf

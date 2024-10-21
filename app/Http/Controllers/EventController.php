@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Category;
+use App\Rules\NoOverlappingEvent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
 {
@@ -26,14 +28,18 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'start_date' => 'required|date',
-            'end_date' => 'required|date|after_or_equal:start_date',
+            'end_date' => ['required', 'date', 'after_or_equal:start_date', new NoOverlappingEvent($request->start_date, $request->end_date)],
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category_id' => 'required|exists:categories,id',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator, 'addEvent')->withInput();
+        }
 
         $data = $request->all();
 
@@ -43,7 +49,6 @@ class EventController extends Controller
         }
 
         Event::create($data);
-
         return redirect()->route('events.index')->with('success', 'Event created successfully');
     }
 
@@ -61,14 +66,18 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'start_date' => 'required|date',
-            'end_date' => 'required|date|after_or_equal:start_date',
+            'end_date' => ['required', 'date', 'after_or_equal:start_date', new NoOverlappingEvent($request->start_date, $request->end_date, $event->id)],
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category_id' => 'required|exists:categories,id',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator, 'editEvent')->withInput();
+        }
 
         $data = $request->all();
 
@@ -95,7 +104,7 @@ class EventController extends Controller
     public function showImage($id)
     {
         $event = Event::find($id);
-        $imageData = base64_encode($event->image); // Assuming 'image' is the BLOB field
+        $imageData = base64_encode($event->image);
         return view('event.show', compact('event', 'imageData'));
     }
 }
