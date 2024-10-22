@@ -5,10 +5,13 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 
+
 Route::get('/', [EventController::class, 'index'])->name('home');
-// Route::get('/categories', [CategoryController::class, 'index']);
 
 Route::resource('/events', EventController::class);
+
+Route::put('/categories/update-name', [CategoryController::class, 'updateName'])->name('categories.updateName');
+Route::put('/categories/update-color', [CategoryController::class, 'updateColor'])->name('categories.updateColor');
 
 Route::get('/register', [UserController::class, 'showRegistrationForm']);
 Route::post('/register', [UserController::class, 'register'])->name('register');

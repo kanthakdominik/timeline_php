@@ -20,14 +20,16 @@
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
   <section style="background-color: #F0F2F5;">
   
-    @include('categories-bar')
-    @include('new-card-bar')
-    @include('events-cards')
+  @include('categories-bar')
+  @include('new-card-bar')
+  @include('events-cards')
 
   </section>
 
   @include('edit-event-modal')
   @include('add-event-modal')
+  @include('change-category-color-modal')
+  @include('change-category-name-modal')
 
   <script>
     const events = @json($events);

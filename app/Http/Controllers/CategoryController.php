@@ -8,58 +8,36 @@ use Illuminate\Http\Request;
 class CategoryController
 {
     /**
-     * Display a listing of the resource.
+     * Update the name of the specified category.
      */
-    public function index()
+    public function updateName(Request $request)
     {
-        
+        $request->validate([
+            'category_id' => 'required|exists:categories,id',
+            'name' => 'required|string|max:255',
+        ]);
+
+        $category = Category::findOrFail($request->category_id);
+        $category->name = $request->name;
+        $category->save();
+
+        return redirect()->back()->with('success', 'Category name updated successfully.');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Update the color of the specified category.
      */
-    public function create()
+    public function updateColor(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'category_id' => 'required|exists:categories,id',
+            'color' => 'required|string|max:7',
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $category = Category::findOrFail($request->category_id);
+        $category->color = $request->color;
+        $category->save();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->back()->with('success', 'Category color updated successfully.');
     }
 }

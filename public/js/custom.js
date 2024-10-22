@@ -76,4 +76,24 @@ document.addEventListener('DOMContentLoaded', function () {
             addEventModal.show();
         }
     }
+
+   // Change category name modal
+   const changeCategoryNameModal = new bootstrap.Modal(document.getElementById('changeCategoryNameModal'));
+   document.querySelectorAll('.change-name-btn').forEach(button => {
+       button.addEventListener('click', function() {
+           const categoryId = this.getAttribute('data-category-id');
+           document.getElementById('categoryId').value = categoryId;
+           changeCategoryNameModal.show();
+       });
+   });
+
+   // Change category color modal
+   const changeCategoryColorModal = new bootstrap.Modal(document.getElementById('changeCategoryColorModal'));
+   document.querySelectorAll('.change-color-btn').forEach(button => {
+       button.addEventListener('click', function() {
+           const categoryId = this.getAttribute('data-category-id');
+           document.getElementById('colorCategoryId').value = categoryId;
+           changeCategoryColorModal.show();
+       });
+   });
 });
