@@ -18,3 +18,8 @@ Route::post('/register', [UserController::class, 'register'])->name('register');
  
 Route::get('/login', [UserController::class, 'showLoginForm']);
 Route::post('/login', [UserController::class, 'login'])->name('login');
+
+Route::get('/password/change', [UserController::class, 'showChangePasswordForm'])->name('password.change.form');
+Route::post('/password/change', [UserController::class, 'changePassword'])->name('password.change');
+
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');

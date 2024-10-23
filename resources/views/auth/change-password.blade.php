@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Logowanie - PGE Narodowy - Wydarzenia 2024</title>
+    <title>Zmiana hasła - PGE Narodowy - Wydarzenia 2024</title>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -21,16 +21,16 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card shadow-sm">
-                    <div class="card-header bg-primary text-white">{{ __('Logowanie') }}</div>
+                    <div class="card-header bg-primary text-white">{{ __('Zmień hasło') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ route('password.change') }}">
                             @csrf
 
                             <div class="mb-3">
-                                <label for="email" class="form-label">{{ __('Adres Email') }}</label>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                @error('email')
+                                <label for="current_password" class="form-label">{{ __('Aktualne hasło') }}</label>
+                                <input id="current_password" type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password" required autocomplete="current-password">
+                                @error('current_password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -38,29 +38,24 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="password" class="form-label">{{ __('Hasło') }}</label>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                                @error('password')
+                                <label for="new_password" class="form-label">{{ __('Nowe hasło') }}</label>
+                                <input id="new_password" type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" required autocomplete="new-password">
+                                @error('new_password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
 
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                <label class="form-check-label" for="remember">{{ __('Pamiętaj mnie') }}</label>
+                            <div class="mb-3">
+                                <label for="new_password_confirmation" class="form-label">{{ __('Potwierdź nowe hasło') }}</label>
+                                <input id="new_password_confirmation" type="password" class="form-control" name="new_password_confirmation" required autocomplete="new-password">
                             </div>
 
                             <div class="mb-0">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Zaloguj') }}
+                                    {{ __('Zmień hasło') }}
                                 </button>
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Zapomniałeś hasła?') }}
-                                    </a>
-                                @endif
                             </div>
                         </form>
                     </div>

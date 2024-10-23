@@ -1,6 +1,6 @@
 <div class="row mb-4">
     <div class="col-md-12">
-        <div class="filter-bar d-flex justify-content-center align-items-center p-3 bg-light rounded shadow-sm">
+        <div class="filter-bar categories-bar d-flex justify-content-center align-items-center p-3 rounded shadow-sm">
             @foreach($categories as $category)
                 <div class="category-item mx-2 text-center">
                     <button class="btn category-btn" type="button" data-category-id="{{ $category->id }}" style="background-color: {{ $category->color }}; color: #fff;">

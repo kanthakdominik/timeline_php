@@ -140,3 +140,11 @@
   .category-btn.active {
     border: 2px solid #000;
 }
+
+.categories-bar {
+  background-color: #E0E2E5;
+}
+
+.events-cards {
+  background-color: #F0F2F5;
+}

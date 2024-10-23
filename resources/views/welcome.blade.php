@@ -18,12 +18,11 @@
 </head>
 
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-  <section style="background-color: #F0F2F5;">
-  
-  @include('categories-bar')
-  @include('new-card-bar')
-  @include('events-cards')
-
+  <section class="events-cards">
+    @include('main-bar')
+    @include('categories-bar')
+    @include('new-card-bar')
+    @include('events-cards')
   </section>
 
   @include('edit-event-modal')
@@ -34,7 +33,6 @@
   <script>
     const events = @json($events);
   </script>
-
 </body>
 
 </html>
