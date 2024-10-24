@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     /**
      * Display a listing of the resource.
      */

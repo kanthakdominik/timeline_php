@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+
     // Toggle elements in the card
     document.querySelectorAll('.card').forEach(function (card) {
         card.addEventListener('click', function () {
@@ -6,13 +7,26 @@ document.addEventListener('DOMContentLoaded', function () {
             elementsToToggle.forEach(function (element) {
                 element.style.display = element.style.display === 'none' ? 'block' : 'none';
             });
-
-            const elementsToToggle2 = card.querySelectorAll('.click-me');
-            elementsToToggle2.forEach(function (element) {
-                element.style.display = element.style.display === 'block' ? 'none' : 'block';
-            });
         });
     });
+
+     // Toggle all cards
+     const toggleCardsBtn = document.getElementById('toggle-cards-btn');
+     const eventCards = document.querySelectorAll('.card');
+     let allHidden = true; // Track the state of all cards
+ 
+     toggleCardsBtn.addEventListener('click', function() {
+         allHidden = !allHidden; // Toggle the state
+ 
+         eventCards.forEach(card => {
+             const elementsToToggle = card.querySelectorAll('.element-hidden');
+             elementsToToggle.forEach(function(element) {
+                 element.style.display = allHidden ? 'none' : 'block';
+             });
+         });
+ 
+         toggleCardsBtn.textContent = allHidden ? 'Rozwiń wszystkie' : 'Zwiń wszystkie';
+     });
 
     // Filter events by category
     const categoryButtons = document.querySelectorAll('.category-btn');

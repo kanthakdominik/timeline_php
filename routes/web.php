@@ -8,10 +8,10 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', [EventController::class, 'index'])->name('home');
 
-Route::resource('/events', EventController::class);
+Route::resource('/events', EventController::class)->middleware('auth');
 
-Route::put('/categories/update-name', [CategoryController::class, 'updateName'])->name('categories.updateName');
-Route::put('/categories/update-color', [CategoryController::class, 'updateColor'])->name('categories.updateColor');
+Route::put('/categories/update-name', [CategoryController::class, 'updateName'])->name('categories.updateName')->middleware('auth');
+Route::put('/categories/update-color', [CategoryController::class, 'updateColor'])->name('categories.updateColor')->middleware('auth');
 
 Route::get('/register', [UserController::class, 'showRegistrationForm']);
 Route::post('/register', [UserController::class, 'register'])->name('register');
@@ -19,7 +19,7 @@ Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::get('/login', [UserController::class, 'showLoginForm']);
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
-Route::get('/password/change', [UserController::class, 'showChangePasswordForm'])->name('password.change.form');
-Route::post('/password/change', [UserController::class, 'changePassword'])->name('password.change');
+Route::get('/password/change', [UserController::class, 'showChangePasswordForm'])->name('password.change.form')->middleware('auth');
+Route::post('/password/change', [UserController::class, 'changePassword'])->name('password.change')->middleware('auth');
 
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');

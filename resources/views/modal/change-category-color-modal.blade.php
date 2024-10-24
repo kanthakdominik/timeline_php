@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="changeCategoryColorModalLabel">Change Category Color</h5>
+        <h5 class="modal-title" id="changeCategoryColorModalLabel">Kategoria - Zmień kolor</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -11,10 +11,10 @@
           @method('PUT')
           <input type="hidden" name="category_id" id="colorCategoryId">
           <div class="mb-3">
-            <label for="categoryColor" class="form-label">New Category Color</label>
+            <label for="categoryColor" class="form-label">Wybierz kolor</label>
             <input type="color" class="form-control" id="categoryColor" name="color" required>
           </div>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Zapisz</button>
         </form>
       </div>
     </div>

@@ -19,16 +19,16 @@
 
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
   <section class="events-cards">
-    @include('main-bar')
-    @include('categories-bar')
-    @include('new-card-bar')
+    @include('bar\main-bar')
+    @include('bar\setting-bar')
+    @include('bar\categories-bar')
     @include('events-cards')
   </section>
 
-  @include('edit-event-modal')
-  @include('add-event-modal')
-  @include('change-category-color-modal')
-  @include('change-category-name-modal')
+  @include('modal\edit-event-modal')
+  @include('modal\add-event-modal')
+  @include('modal\change-category-color-modal')
+  @include('modal\change-category-name-modal')
 
   <script>
     const events = @json($events);
