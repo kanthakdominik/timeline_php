@@ -18,7 +18,7 @@
 </head>
 
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-  <section class="events-cards">
+  <section class="main-container">
     @include('bar\main-bar')
     @include('bar\setting-bar')
     @include('bar\categories-bar')

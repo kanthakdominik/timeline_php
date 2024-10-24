@@ -1,4 +1,4 @@
-<div class="row mb-4">
+<div class="row mb-4 no-print" id="categories-bar">
     <div class="col-md-12">
         <div class="filter-bar bar-properties d-flex justify-content-between align-items-center p-3 rounded shadow-sm">
             <div class="d-flex">
@@ -19,8 +19,8 @@
                     </div>
                 @endforeach
             </div>
-            <div class="d-flex">
-                <button class="btn btn-sm btn-outline-secondary mx-1">Right Button</button>
+            <div class="d-flex">               
+                <button id="print-view-btn" class="btn btn-sm btn-outline-secondary mx-1">Widok wydruku</button>
             </div>
         </div>
     </div>

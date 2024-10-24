@@ -7,26 +7,48 @@ document.addEventListener('DOMContentLoaded', function () {
             elementsToToggle.forEach(function (element) {
                 element.style.display = element.style.display === 'none' ? 'block' : 'none';
             });
+
+            const toggleLabel = card.querySelector('#toggleLabel');
+            if (toggleLabel) {
+                const isExpanded = elementsToToggle[0].style.display === 'block';
+                toggleLabel.textContent = isExpanded ? '' : 'Rozwiń';
+            }
         });
     });
 
-     // Toggle all cards
-     const toggleCardsBtn = document.getElementById('toggle-cards-btn');
-     const eventCards = document.querySelectorAll('.card');
-     let allHidden = true; // Track the state of all cards
- 
-     toggleCardsBtn.addEventListener('click', function() {
-         allHidden = !allHidden; // Toggle the state
- 
-         eventCards.forEach(card => {
-             const elementsToToggle = card.querySelectorAll('.element-hidden');
-             elementsToToggle.forEach(function(element) {
-                 element.style.display = allHidden ? 'none' : 'block';
-             });
-         });
- 
-         toggleCardsBtn.textContent = allHidden ? 'Rozwiń wszystkie' : 'Zwiń wszystkie';
-     });
+    // Toggle all cards
+    const toggleCardsBtn = document.getElementById('toggle-cards-btn');
+    const eventCards = document.querySelectorAll('.card');
+    let allHidden = true;
+
+    toggleCardsBtn.addEventListener('click', function () {
+        allHidden = !allHidden; 
+
+        eventCards.forEach(card => {
+            const elementsToToggle = card.querySelectorAll('.element-hidden');
+            elementsToToggle.forEach(function (element) {
+                element.style.display = allHidden ? 'none' : 'block';
+            });
+
+            const toggleLabel = card.querySelector('#toggleLabel');
+            if (toggleLabel) {
+                toggleLabel.textContent = allHidden ? 'Rozwiń' : '';
+            }
+        });
+
+        toggleCardsBtn.textContent = allHidden ? 'Rozwiń wszystkie' : 'Zwiń wszystkie';
+    });
+
+    // print button
+    document.getElementById('print-view-btn').addEventListener('click', function () {
+        eventCards.forEach(card => {
+            const elementsToToggle = card.querySelectorAll('.element-hidden');
+            elementsToToggle.forEach(function (element) {
+                element.style.display = 'block';
+            });
+        });
+        window.print();
+    });
 
     // Filter events by category
     const categoryButtons = document.querySelectorAll('.category-btn');
@@ -91,23 +113,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-   // Change category name modal
-   const changeCategoryNameModal = new bootstrap.Modal(document.getElementById('changeCategoryNameModal'));
-   document.querySelectorAll('.change-name-btn').forEach(button => {
-       button.addEventListener('click', function() {
-           const categoryId = this.getAttribute('data-category-id');
-           document.getElementById('categoryId').value = categoryId;
-           changeCategoryNameModal.show();
-       });
-   });
+    // Change category name modal
+    const changeCategoryNameModal = new bootstrap.Modal(document.getElementById('changeCategoryNameModal'));
+    document.querySelectorAll('.change-name-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const categoryId = this.getAttribute('data-category-id');
+            document.getElementById('categoryId').value = categoryId;
+            changeCategoryNameModal.show();
+        });
+    });
 
-   // Change category color modal
-   const changeCategoryColorModal = new bootstrap.Modal(document.getElementById('changeCategoryColorModal'));
-   document.querySelectorAll('.change-color-btn').forEach(button => {
-       button.addEventListener('click', function() {
-           const categoryId = this.getAttribute('data-category-id');
-           document.getElementById('colorCategoryId').value = categoryId;
-           changeCategoryColorModal.show();
-       });
-   });
+    // Change category color modal
+    const changeCategoryColorModal = new bootstrap.Modal(document.getElementById('changeCategoryColorModal'));
+    document.querySelectorAll('.change-color-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const categoryId = this.getAttribute('data-category-id');
+            document.getElementById('colorCategoryId').value = categoryId;
+            changeCategoryColorModal.show();
+        });
+    });
 });

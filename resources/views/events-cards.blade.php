@@ -1,10 +1,10 @@
-<div class="container py-5">
+<div class="container py-5 print-view" id="event-cards">
     <div class="main-timeline-2">
         @foreach($events as $event)
             <div class="timeline-2 {{ $loop->index % 2 == 0 ? 'left-2' : 'right-2' }} event-item"
                 data-category-id="{{ $event->category_id }}">
                 <div>
-                    <div class="card" style="background-color: {{$event->category->color}};">
+                    <div class="card card-no-break" style="background-color: {{$event->category->color}};">
                         <img src="data:image/png;base64,{{ $event->image }}" class="card-img-top element-hidden"
                             alt="{{ $event->name }} Logo">
                         <div class="card-body p-4">
@@ -15,10 +15,10 @@
                             </p>
                             <p class="mb-0 element-hidden">{{ $event->description }}</p>
                         </div>
-                        <span class="click-me">Rozwiń</span>
+                        <span class="click-me no-print" id="toggleLabel">Rozwiń</span>
                     </div>
                     @auth
-                        <div class="d-flex justify-content-end">
+                        <div class="d-flex justify-content-end no-print" id="events-cards-buttons">
                             <button class="btn btn-outline-primary mt-3" type="button" onclick="openEditModal({{ $event->id }})">Edytuj</button>
                             <form action="{{ route('events.destroy', $event->id) }}" method="POST" class="d-inline ms-2" onsubmit="return confirm('Na pewno chcesz usunąć to wydarzenie?');">
                                 @csrf

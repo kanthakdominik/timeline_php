@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bar-properties">
+<nav class="navbar navbar-expand-lg bar-properties no-print" id="settings-bar">
   <div class="container-fluid">
     @auth
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
