@@ -20,7 +20,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card shadow-sm">
-                    <div class="card-header bg-primary text-white">{{ __('Zmień hasło') }}</div>
+                    <div class="card-header bg-dark text-white">{{ __('Zmień hasło') }}</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('password.change') }}">
                             @csrf

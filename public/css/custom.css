@@ -35,6 +35,17 @@
   z-index: 1;
 }
 
+.main-container {
+  background-color: #F0F2F5;
+}
+
+.container {
+  background-color: #e4f0f4;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* Place the container to the left */
 .left-2 {
   padding: 0px 40px 20px 0px;
@@ -139,17 +150,13 @@
 }
 
 .category-btn.active {
-  border: 2px solid #000;
+  border: 4cappx solid #722424 !important;
+  color: #000000 !important;
 }
 
 .bar-properties {
-  background-color: #E0E2E5;
+  background-color: #CED0D2;
 }
-
-.main-container {
-  background-color: #F0F2F5;
-}
-
 
 @media print {
   .no-print {

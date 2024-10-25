@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
         toggleCardsBtn.textContent = allHidden ? 'Rozwiń wszystkie' : 'Zwiń wszystkie';
     });
 
-    // print button
+    // Print button
     document.getElementById('print-view-btn').addEventListener('click', function () {
         eventCards.forEach(card => {
             const elementsToToggle = card.querySelectorAll('.element-hidden');
