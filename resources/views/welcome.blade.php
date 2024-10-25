@@ -29,6 +29,7 @@
   @include('modal\add-event-modal')
   @include('modal\change-category-color-modal')
   @include('modal\change-category-name-modal')
+  @include('modal\add-category-modal')
 
   <script>
     const events = @json($events);

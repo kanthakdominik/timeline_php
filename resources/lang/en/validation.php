@@ -198,6 +198,7 @@ return [
         ],
         'email' => [
             'email' => 'Pole :attribute musi być prawidłowym adresem e-mail.',
+            'unique' => 'Ten adres email jest już zajęty.',
         ],
         'ends_with' => [
             'ends_with' => 'Pole :attribute musi kończyć się jednym z następujących: :values.',
@@ -349,6 +350,7 @@ return [
         'password' => [
             'min' => 'Hasło musi mieć co najmniej :min znaków.',
             'password' => 'Hasło jest niepoprawne.',
+            'confirmed' => 'Potwierdzenie hasła różni się od hasła.',
         ],
         'new_password' => [
             'min' => 'Nowe hasło musi mieć co najmniej :min znaków.',

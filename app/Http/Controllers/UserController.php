@@ -19,7 +19,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'password' => 'required|min:6|confirmed',
         ]);
 
         User::create([
@@ -44,7 +44,9 @@ class UserController extends Controller
             return redirect()->intended('/');
         }
 
-        return redirect('/login')->with('error', 'Invalid credentials. Please try again.');
+        return redirect()->back()->withInput($request->only('email', 'remember'))->withErrors([
+            'password' => 'Niepoprawne dane',
+        ]);
     }
 
     /**

@@ -11,9 +11,14 @@
                             {{ $category->name }}
                         </button>
                         @auth
-                            <div class="mt-2 d-flex justify-content-center">
-                                <button class="btn btn-sm btn-outline-primary change-name-btn mx-1" type="button" data-category-id="{{ $category->id }}">Ustaw nazwę</button>
-                                <button class="btn btn-sm btn-outline-secondary change-color-btn mx-1" type="button" data-category-id="{{ $category->id }}">Ustaw kolor</button>
+                            <div class="mt-2 d-flex flex-column align-items-center">
+                                <button class="btn btn-sm btn-outline-primary change-name-btn mb-2" type="button" data-category-id="{{ $category->id }}">Ustaw nazwę</button>
+                                <button class="btn btn-sm btn-outline-secondary change-color-btn mb-2" type="button" data-category-id="{{ $category->id }}">Ustaw kolor</button>
+                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="delete-category-form">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-outline-danger delete-category-btn" type="submit" data-category-id="{{ $category->id }}">Usuń kategorię</button>
+                                </form>
                             </div>
                         @endauth
                     </div>
@@ -23,5 +28,10 @@
                 <button id="print-view-btn" class="btn btn-sm btn-outline-secondary mx-1">Widok wydruku</button>
             </div>
         </div>
+        @if ($errors->has('category'))
+            <div class="alert alert-danger mt-3">
+                {{ $errors->first('category') }}
+            </div>
+        @endif
     </div>
 </div>

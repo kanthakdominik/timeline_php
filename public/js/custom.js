@@ -132,4 +132,20 @@ document.addEventListener('DOMContentLoaded', function () {
             changeCategoryColorModal.show();
         });
     });
+
+    // Delete category confirmation
+    document.querySelectorAll('.delete-category-form').forEach(function(form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            if (confirm('Czy na pewno chcesz usunąć kategorię?')) {
+                form.submit();
+            }
+        });
+    });
+
+    // Add new category modal
+    const addCategoryModal = new bootstrap.Modal(document.getElementById('addCategoryModal'));
+    document.getElementById('addNewCategoryButton').addEventListener('click', function() {
+        addCategoryModal.show();
+    });    
 });
