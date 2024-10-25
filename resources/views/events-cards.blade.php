@@ -20,7 +20,7 @@
                     @auth
                         <div class="d-flex justify-content-end" id="events-cards-buttons">
                             <button class="btn btn-outline-primary mt-3 no-print" type="button" onclick="openEditModal({{ $event->id }})">Edytuj</button>
-                            <form class="no-print" action="{{ route('events.destroy', $event->id) }}" method="POST" class="d-inline ms-2" onsubmit="return confirm('Na pewno chcesz usunąć to wydarzenie?');">
+                            <form class="d-inline ms-3 no-print" action="{{ route('events.destroy', $event->id) }}" method="POST" class="d-inline ms-2" onsubmit="return confirm('Na pewno chcesz usunąć to wydarzenie?');">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-outline-danger mt-3">Usuń</button>
