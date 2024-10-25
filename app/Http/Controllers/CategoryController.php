@@ -62,7 +62,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'category_id' => 'required|exists:categories,id',
-            'color' => 'required|string|max:7',
+            'color' => 'nullable|string|max:7',
         ]);
 
         $category = Category::findOrFail($request->category_id);
