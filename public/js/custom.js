@@ -48,6 +48,13 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
         window.print();
+
+        eventCards.forEach(card => {
+            const elementsToToggle = card.querySelectorAll('.element-hidden');
+            elementsToToggle.forEach(function (element) {
+                element.style.display = 'none';
+            });
+        });
     });
 
     // Filter events by category

@@ -12,7 +12,7 @@
           <input type="hidden" name="category_id" id="colorCategoryId">
           <div class="mb-3">
             <label for="categoryColor" class="form-label">Wybierz kolor</label>
-            <input type="color" class="form-control" id="categoryColor" name="color" required>
+            <input type="color" class="form-control" id="categoryColor" name="color" value="{{ old('color', '#4A628A') }}" required>
           </div>
           <button type="submit" class="btn btn-primary">Zapisz</button>
         </form>

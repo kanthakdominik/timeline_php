@@ -11,7 +11,7 @@
                     @method('PUT')
                     <input type="hidden" name="id" id="eventId">
                     <div class="mb-3">
-                        <label for="eventName" class="form-label">Nazwa</label>
+                        <label for="eventName" class="form-label">Nazwa <span class="required-asterisk">*</span></label>
                         <input type="text" class="form-control" id="eventName" name="name" value="{{ old('name') }}" required>
                         @error('name', 'editEvent')
                             <div class="text-danger">{{ $message }}</div>
@@ -25,14 +25,14 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="eventStartDate" class="form-label">Data rozpoczęcia</label>
+                        <label for="eventStartDate" class="form-label">Data rozpoczęcia <span class="required-asterisk">*</span></label>
                         <input type="date" class="form-control" id="eventStartDate" name="start_date" value="{{ old('start_date') }}" required>
                         @error('start_date', 'editEvent')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="eventEndDate" class="form-label">Data zakończenia</label>
+                        <label for="eventEndDate" class="form-label">Data zakończenia <span class="required-asterisk">*</span></label>
                         <input type="date" class="form-control" id="eventEndDate" name="end_date" value="{{ old('end_date') }}" required>
                         @error('end_date', 'editEvent')
                             <div class="text-danger">{{ $message }}</div>
@@ -46,7 +46,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="eventCategory" class="form-label">Kategoria</label>
+                        <label for="eventCategory" class="form-label">Kategoria <span class="required-asterisk">*</span></label>
                         <select class="form-control" id="eventCategory" name="category_id" required>
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}" @if (old('category_id') == $category->id) selected @endif>{{ $category->name }}</option>

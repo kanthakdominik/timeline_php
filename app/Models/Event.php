@@ -9,11 +9,6 @@ class Event extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'name',
         'start_date',
@@ -23,9 +18,11 @@ class Event extends Model
         'category_id',
     ];
 
-    /**
-     * Get the category that owns the event.
-     */
+    protected $dates = [
+        'start_date',
+        'end_date',
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);

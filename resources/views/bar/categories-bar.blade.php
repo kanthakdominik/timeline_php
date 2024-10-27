@@ -11,13 +11,22 @@
                             {{ $category->name }}
                         </button>
                         @auth
-                            <div class="mt-2 d-flex flex-column align-items-center">
-                                <button class="btn btn-sm btn-outline-primary change-name-btn mb-2" type="button" data-category-id="{{ $category->id }}">Ustaw nazwę</button>
-                                <button class="btn btn-sm btn-outline-secondary change-color-btn mb-2" type="button" data-category-id="{{ $category->id }}">Ustaw kolor</button>
-                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="delete-category-form">
+                            <div class="mt-2 d-flex justify-content-center align-items-center">
+                                <button class="btn btn-sm btn-outline-primary change-name-btn mx-1" type="button"
+                                    data-category-id="{{ $category->id }}" title="Edytuj nazwę">
+                                    <i class="fas fa-pen"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary change-color-btn mx-1" type="button"
+                                    data-category-id="{{ $category->id }}" title="Edytuj kolor">
+                                    <i class="fas fa-paint-brush"></i>
+                                </button>
+                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="delete-category-form d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-sm btn-outline-danger delete-category-btn" type="submit" data-category-id="{{ $category->id }}">Usuń kategorię</button>
+                                    <button class="btn btn-sm btn-outline-danger delete-category-btn mx-1" type="submit"
+                                        data-category-id="{{ $category->id }}" title="Usuń kategorię">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
                                 </form>
                             </div>
                         @endauth
@@ -25,7 +34,7 @@
                 @endforeach
             </div>
             <div class="d-flex">               
-                <button id="print-view-btn" class="btn btn-sm btn-outline-secondary mx-1">Widok wydruku</button>
+                <button id="print-view-btn" class="btn btn-sm btn-outline-secondary mx-1">Wydruk</button>
             </div>
         </div>
         @if ($errors->has('category'))

@@ -25,7 +25,7 @@
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
                             <div class="mb-3">
-                                <label for="name" class="form-label">{{ __('Nazwa') }}</label>
+                                <label for="name" class="form-label">{{ __('Nazwa użytkownika') }}</label>
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                     name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                 @error('name')
@@ -36,7 +36,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">{{ __('Adres Email ') }}</label>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
                                     name="email" value="{{ old('email') }}" required autocomplete="email">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">

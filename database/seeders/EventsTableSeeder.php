@@ -12,7 +12,6 @@ class EventsTableSeeder extends Seeder
      */
     public function run(): void
     {
-
         $sportCategoryId = DB::table('categories')->where('name', 'sportowa')->value('id');
         $musicCategoryId = DB::table('categories')->where('name', 'muzyczna')->value('id');
         $culturalCategoryId = DB::table('categories')->where('name', 'kulturalna')->value('id');

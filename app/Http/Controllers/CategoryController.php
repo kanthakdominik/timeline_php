@@ -14,11 +14,13 @@ class CategoryController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Store a newly created category in storage.
-     */
     public function store(Request $request)
     {
+        $categoryCount = Category::count();
+        if ($categoryCount > 10) {
+            return redirect()->back()->withErrors(['category' => 'Osiągnięto maksymalną liczbę kategorii (10).'])->withInput();
+        }
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255|unique:categories,name',
             'color' => 'nullable|string|max:7',
@@ -31,33 +33,34 @@ class CategoryController extends Controller
         $data = $request->all();
         Category::create($data);
         
-        return redirect()->back()->with('success', 'Category created successfully.');
+        return redirect()->back()->with('success', 'Kategoria stworzona pomyślnie.');
     }
 
-    /**
-     * Update the name of the specified category.
-     */
     public function updateName(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'category_id' => 'required|exists:categories,id',
-            'name' => 'required|string|max:255|unique:categories,name,',
+            'name' => 'required|string|max:255|unique:categories,name',
+        ], [
+            'category_id.required' => 'Pole kategoria jest wymagane.',
+            'category_id.exists' => 'Wybrana kategoria jest nieprawidłowa.',
+            'name.required' => 'Pole nazwa jest wymagane.',
+            'name.string' => 'Pole nazwa musi być ciągiem znaków.',
+            'name.max' => 'Nazwa nie może być dłuższa niż 255 znaków.',
+            'name.unique' => 'Kategoria o takiej nazwie już istnieje.',
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors(['category' => 'Kategoria o takiej nazwie już istnieje.']);
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
         $category = Category::findOrFail($request->category_id);
         $category->name = $request->name;
         $category->save();
 
-        return redirect()->back()->with('success', 'Category name updated successfully.');
+        return redirect()->back()->with('success', 'Nazwa kategorii ustawiona pomyślnie.');
     }
 
-    /**
-     * Update the color of the specified category.
-     */
     public function updateColor(Request $request)
     {
         $request->validate([
@@ -69,12 +72,9 @@ class CategoryController extends Controller
         $category->color = $request->color;
         $category->save();
 
-        return redirect()->back()->with('success', 'Category color updated successfully.');
+        return redirect()->back()->with('success', 'Kolor kategorii ustawiony pomyślnie.');
     }
 
-    /**
-     * Remove the specified category from storage.
-     */
     public function destroy(Category $category)
     {
         // Check if any events are associated with this category
@@ -85,6 +85,6 @@ class CategoryController extends Controller
         }
 
         $category->delete();
-        return redirect()->back()->with('success', 'Category deleted successfully.');
+        return redirect()->back()->with('success', 'Kategoria usunięta pomyślnie.');
     }
 }

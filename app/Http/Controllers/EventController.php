@@ -16,9 +16,6 @@ class EventController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
     }
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $categories = Category::all();
@@ -29,9 +26,6 @@ class EventController extends Controller
         return view('welcome', compact('events', 'categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -41,8 +35,24 @@ class EventController extends Controller
             'end_date' => ['required', 'date', 'after_or_equal:start_date', new NoOverlappingEvent($request->start_date, $request->end_date)],
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category_id' => 'required|exists:categories,id',
+        ], [
+            'name.required' => 'Pole nazwa jest wymagane.',
+            'name.string' => 'Pole nazwa musi być ciągiem znaków.',
+            'name.max' => 'Nazwa nie może być dłuższa niż 255 znaków.',
+            'description.nullable' => 'Pole opis jest opcjonalne.',
+            'description.string' => 'Pole opis musi być ciągiem znaków.',
+            'start_date.required' => 'Pole data rozpoczęcia jest wymagane.',
+            'start_date.date' => 'Pole data rozpoczęcia musi być prawidłową datą.',
+            'end_date.required' => 'Pole data zakończenia jest wymagane.',
+            'end_date.date' => 'Pole data zakończenia musi być prawidłową datą.',
+            'end_date.after_or_equal' => 'Data zakończenia musi być datą późniejszą lub równą dacie rozpoczęcia.',
+            'image.image' => 'Plik musi być obrazem.',
+            'image.mimes' => 'Plik musi być typu: jpeg, png, jpg, gif, svg.',
+            'image.max' => 'Plik nie może być większy niż 2048 kilobajtów.',
+            'category_id.required' => 'Pole kategoria jest wymagane.',
+            'category_id.exists' => 'Wybrana kategoria jest nieprawidłowa.',
         ]);
-
+        
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator, 'addEvent')->withInput();
         }
@@ -55,21 +65,15 @@ class EventController extends Controller
         }
 
         Event::create($data);
-        return redirect()->route('events.index')->with('success', 'Event created successfully');
+        return redirect()->route('events.index')->with('success', 'Wydarzenie dodane pomyślnie');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Event $event)
     {
         $event->image = base64_encode($event->image);
         return response()->json($event);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Event $event)
     {
         $validator = Validator::make($request->all(), [
@@ -79,6 +83,22 @@ class EventController extends Controller
             'end_date' => ['required', 'date', 'after_or_equal:start_date', new NoOverlappingEvent($request->start_date, $request->end_date, $event->id)],
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category_id' => 'required|exists:categories,id',
+        ], [
+            'name.required' => 'Pole nazwa jest wymagane.',
+            'name.string' => 'Pole nazwa musi być ciągiem znaków.',
+            'name.max' => 'Nazwa nie może być dłuższa niż 255 znaków.',
+            'description.nullable' => 'Pole opis jest opcjonalne.',
+            'description.string' => 'Pole opis musi być ciągiem znaków.',
+            'start_date.required' => 'Pole data rozpoczęcia jest wymagane.',
+            'start_date.date' => 'Pole data rozpoczęcia musi być prawidłową datą.',
+            'end_date.required' => 'Pole data zakończenia jest wymagane.',
+            'end_date.date' => 'Pole data zakończenia musi być prawidłową datą.',
+            'end_date.after_or_equal' => 'Data zakończenia musi być datą późniejszą lub równą dacie rozpoczęcia.',
+            'image.image' => 'Plik musi być obrazem.',
+            'image.mimes' => 'Plik musi być typu: jpeg, png, jpg, gif, svg.',
+            'image.max' => 'Plik nie może być większy niż 2048 kilobajtów.',
+            'category_id.required' => 'Pole kategoria jest wymagane.',
+            'category_id.exists' => 'Wybrana kategoria jest nieprawidłowa.',
         ]);
 
         if ($validator->fails()) {
@@ -93,18 +113,14 @@ class EventController extends Controller
         }
 
         $event->update($data);
-        return redirect()->route('events.index')->with('success', 'Event updated successfully');
+        return redirect()->route('events.index')->with('success', 'Wydarzenie edytowane pomyślnie');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $event = Event::findOrFail($id);
         $event->delete();
-        return redirect()->route('home')->with('success', 'Event deleted successfully.');
-
+        return redirect()->route('home')->with('success', 'Wydarzenie usunięte pomyślnie.');
     }
 
     public function showImage($id)

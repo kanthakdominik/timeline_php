@@ -9,7 +9,7 @@
         <form id="addEventForm" method="POST" action="{{ route('events.store') }}" enctype="multipart/form-data">
           @csrf
           <div class="mb-3">
-            <label for="newEventName" class="form-label">Nazwa</label>
+            <label for="newEventName" class="form-label">Nazwa <span class="required-asterisk">*</span></label>
             <input type="text" class="form-control" id="newEventName" name="name" value="{{ old('name') }}" required>
             @error('name', 'addEvent')
               <div class="text-danger">{{ $message }}</div>
@@ -23,14 +23,14 @@
             @enderror
           </div>
           <div class="mb-3">
-            <label for="newEventStartDate" class="form-label">Data rozpoczęcia</label>
+            <label for="newEventStartDate" class="form-label">Data rozpoczęcia <span class="required-asterisk">*</span></label>
             <input type="date" class="form-control" id="newEventStartDate" name="start_date" value="{{ old('start_date') }}" required>
             @error('start_date', 'addEvent')
               <div class="text-danger">{{ $message }}</div>
             @enderror
           </div>
           <div class="mb-3">
-            <label for="newEventEndDate" class="form-label">Data zakończenia</label>
+            <label for="newEventEndDate" class="form-label">Data zakończenia <span class="required-asterisk">*</span></label>
             <input type="date" class="form-control" id="newEventEndDate" name="end_date" value="{{ old('end_date') }}" required>
             @error('end_date', 'addEvent')
               <div class="text-danger">{{ $message }}</div>
@@ -44,7 +44,7 @@
             @enderror
           </div>
           <div class="mb-3">
-            <label for="newEventCategory" class="form-label">Kategoria</label>
+            <label for="newEventCategory" class="form-label">Kategoria <span class="required-asterisk">*</span></label>
             <select class="form-control" id="newEventCategory" name="category_id" required>
               @foreach($categories as $category)
                 <option value="{{ $category->id }}" @if (old('category_id') == $category->id) selected @endif>{{ $category->name }}</option>

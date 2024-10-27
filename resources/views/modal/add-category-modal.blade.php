@@ -9,7 +9,7 @@
                 <form id="addCategoryForm" method="POST" action="{{ route('categories.store') }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="categoryName" class="form-label">Nazwa kategorii</label>
+                        <label for="categoryName" class="form-label">Nazwa kategorii <span class="required-asterisk">*</span></label>
                         <input type="text" class="form-control" id="categoryName" name="name" required>
                         @error('name', 'addCategory')
                             <div class="invalid-feedback">
@@ -18,8 +18,8 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="categoryColor" class="form-label">Kolor kategorii</label>
-                        <input type="color" class="form-control" id="categoryColor" name="color">
+                        <label for="categoryColor" class="form-label">Kolor kategorii <span class="required-asterisk">*</span></label>
+                        <input type="color" class="form-control @error('color', 'addCategory') is-invalid @enderror" id="categoryColor" name="color" value="{{ old('color', '#4A628A') }}">
                         @error('name', 'addCategory')
                             <div class="invalid-feedback">
                                 {{ $message }}

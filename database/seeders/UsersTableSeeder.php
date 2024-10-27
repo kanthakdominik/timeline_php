@@ -16,14 +16,14 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Administrator',
                 'email' => 'admin@timeline.com',
-                'password' => Hash::make('password'),
+                'password' => Hash::make('Password123!'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'name' => 'Admin2',
                 'email' => 'admin2@timeline.com',
-                'password' => Hash::make('password'),
+                'password' => Hash::make('Password123!'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
