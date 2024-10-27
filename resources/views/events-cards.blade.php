@@ -18,7 +18,7 @@
                                     <img src="data:image/png;base64,{{ $event->image }}" class="card-img-top" alt="">
                                 </div>
                             </div>
-                            <p class="mb-0 element-hidden mt-4">{{ $event->description }}</p>
+                            <p class="mb-0 element-hidden mt-4 text-justify">{{ $event->description }}</p>
                         </div>
                         <span class="click-me no-print" id="toggleLabel">Rozwiń</span>
                     </div>

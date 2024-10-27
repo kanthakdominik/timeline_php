@@ -152,6 +152,10 @@
   color: red;
 }
 
+.text-justify {
+  text-align: justify;
+}
+
 @media print {
   .no-print {
     display: none !important;
