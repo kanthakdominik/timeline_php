@@ -15,7 +15,7 @@
                                     </p>
                                 </div>
                                 <div class="col-md-6 text-center">
-                                    <img src="data:image/png;base64,{{ $event->image }}" class="card-img-top element-hidden" alt="">
+                                    <img src="data:image/png;base64,{{ $event->image }}" class="card-img-top" alt="">
                                 </div>
                             </div>
                             <p class="mb-0 element-hidden mt-4">{{ $event->description }}</p>
