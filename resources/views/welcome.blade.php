@@ -27,9 +27,10 @@
     @include('bar\categories-bar')
 
     @if (session('success'))
-      <div class="alert alert-success">
+    <div class="alert alert-success alert-dismissible fade show no-print" role="alert">
         {{ session('success') }}
-      </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     @endif
 
     @include('events-cards')

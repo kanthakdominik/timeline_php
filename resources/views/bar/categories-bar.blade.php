@@ -38,8 +38,9 @@
             </div>
         </div>
         @if ($errors->has('category'))
-            <div class="alert alert-danger mt-3">
+            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
                 {{ $errors->first('category') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
     </div>

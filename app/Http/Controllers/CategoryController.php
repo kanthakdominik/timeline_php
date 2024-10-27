@@ -17,17 +17,22 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $categoryCount = Category::count();
-        if ($categoryCount > 10) {
+        if ($categoryCount >= 10) {
             return redirect()->back()->withErrors(['category' => 'Osiągnięto maksymalną liczbę kategorii (10).'])->withInput();
         }
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255|unique:categories,name',
             'color' => 'nullable|string|max:7',
+        ], [
+            'name.required' => 'Pole nazwa jest wymagane.',
+            'name.string' => 'Pole nazwa musi być ciągiem znaków.',
+            'name.unique' => 'Kategoria o takiej nazwie już istnieje.',
+            'name.max' => 'Nazwa nie może być dłuższa niż 255 znaków.',
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors(['category' => 'Kategoria o takiej nazwie już istnieje.']);
+            return redirect()->back()->withErrors(['category' => $validator->errors()])->withInput();
         }
 
         $data = $request->all();
@@ -42,16 +47,14 @@ class CategoryController extends Controller
             'category_id' => 'required|exists:categories,id',
             'name' => 'required|string|max:255|unique:categories,name',
         ], [
-            'category_id.required' => 'Pole kategoria jest wymagane.',
-            'category_id.exists' => 'Wybrana kategoria jest nieprawidłowa.',
             'name.required' => 'Pole nazwa jest wymagane.',
             'name.string' => 'Pole nazwa musi być ciągiem znaków.',
-            'name.max' => 'Nazwa nie może być dłuższa niż 255 znaków.',
             'name.unique' => 'Kategoria o takiej nazwie już istnieje.',
+            'name.max' => 'Nazwa nie może być dłuższa niż 255 znaków.',
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            return redirect()->back()->withErrors(['category' => $validator->errors()])->withInput();
         }
 
         $category = Category::findOrFail($request->category_id);

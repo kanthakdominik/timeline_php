@@ -151,8 +151,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Add new category modal
-    const addCategoryModal = new bootstrap.Modal(document.getElementById('addCategoryModal'));
-    document.getElementById('addNewCategoryButton').addEventListener('click', function() {
-        addCategoryModal.show();
-    });    
+    const addCategoryModalElement = document.getElementById('addCategoryModal');
+    const addNewCategoryButton = document.getElementById('addNewCategoryButton');
+
+    if (addCategoryModalElement && addNewCategoryButton) {
+        const addCategoryModal = new bootstrap.Modal(addCategoryModalElement);
+        addNewCategoryButton.addEventListener('click', function() {
+            addCategoryModal.show();
+     
+        });
+    }
 });
