@@ -1,7 +1,7 @@
 <div class="container py-5 print-view" id="event-cards">
     <div class="main-timeline-2">
         @foreach($events as $event)
-            <div class="timeline-2 {{ $loop->index % 2 == 0 ? 'left-2' : 'right-2' }} event-item"
+            <div class="timeline-2 event-item {{ $loop->index % 2 == 0 ? 'left-2' : 'right-2' }}"
                 data-category-id="{{ $event->category_id }}">
                 <div>
                 <div class="card card-no-break" style="background-color: {{$event->category->color}};">
