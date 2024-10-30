@@ -23,6 +23,7 @@
   <section class="main-container">
   
  <h1>hello</h1>
+ @include('bar/main-bar')
 
   <script>
     const events = @json($events);
