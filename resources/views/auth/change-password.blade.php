@@ -28,7 +28,7 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="current_password" class="form-label">{{ __('Aktualne hasło') }}</label>
-                                <input id="current_password" type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password" required autocomplete="off">
+                                <input id="current_password" type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password" required autocomplete="current-password">
                                 @error('current_password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -37,7 +37,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="new_password" class="form-label">{{ __('Nowe hasło') }}</label>
-                                <input id="new_password" type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" required autocomplete="off">
+                                <input id="new_password" type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" required autocomplete="new-password">
                                 @error('new_password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -46,7 +46,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="new_password_confirmation" class="form-label">{{ __('Potwierdź nowe hasło') }}</label>
-                                <input id="new_password_confirmation" type="password" class="form-control" name="new_password_confirmation" required autocomplete="off">
+                                <input id="new_password_confirmation" type="password" class="form-control" name="new_password_confirmation" required autocomplete="new-password">
                             </div>
                             <div class="mb-0">
                                 <button type="submit" class="btn btn-primary">
