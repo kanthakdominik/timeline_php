@@ -22,8 +22,25 @@
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
   <section class="main-container">
   
- <h1>hello</h1>
- @include('bar/main-bar')
+    @include('bar/main-bar')
+    @include('bar/setting-bar')
+    @include('bar/categories-bar')
+
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show no-print" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
+    @include('events-cards')
+  </section>
+
+  @include('modal/edit-event-modal')
+  @include('modal/add-event-modal')
+  @include('modal/change-category-color-modal')
+  @include('modal/change-category-name-modal')
+  @include('modal/add-category-modal')
 
   <script>
     const events = @json($events);
