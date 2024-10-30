@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('logo.svg') }}">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
