@@ -22,7 +22,7 @@
 <body class="font-sans antialiased dark:bg-black dark:text-white/50">
   <section class="main-container">
   
-    @include('bar\main-bar')
+    <!-- @include('bar\main-bar')
     @include('bar\setting-bar')
     @include('bar\categories-bar')
 
@@ -40,7 +40,7 @@
   @include('modal\add-event-modal')
   @include('modal\change-category-color-modal')
   @include('modal\change-category-name-modal')
-  @include('modal\add-category-modal')
+  @include('modal\add-category-modal') -->
 
   <script>
     const events = @json($events);
