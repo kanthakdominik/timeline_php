@@ -15,7 +15,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    @include('bar\main-bar')
+    @include('bar.main-bar')
     <div class="container mt-5">
         @if (session('success'))
             <div class="alert alert-success">

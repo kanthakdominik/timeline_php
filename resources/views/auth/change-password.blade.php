@@ -15,7 +15,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    @include('bar\main-bar')
+    @include('bar.main-bar')
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
