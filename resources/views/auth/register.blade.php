@@ -29,7 +29,7 @@
                             <div class="mb-3">
                                 <label for="name" class="form-label">{{ __('Nazwa użytkownika') }}</label>
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                    name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    name="name" value="{{ old('name') }}" required autocomplete="off" autofocus>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -39,7 +39,7 @@
                             <div class="mb-3">
                                 <label for="email" class="form-label">{{ __('Adres Email ') }}</label>
                                 <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" value="{{ old('email') }}" required autocomplete="email">
+                                    name="email" value="{{ old('email') }}" required autocomplete="off">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -49,7 +49,7 @@
                             <div class="mb-3">
                                 <label for="password" class="form-label">{{ __('Hasło') }}</label>
                                 <input id="password" type="password"
-                                    class="form-control @error('password') is-invalid @enderror" name="password"
+                                    class="form-control @error('password') is-invalid @enderror" name="off"
                                     required autocomplete="new-password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -60,7 +60,7 @@
                             <div class="mb-3">
                                 <label for="password-confirm" class="form-label">{{ __('Potwierdź hasło') }}</label>
                                 <input id="password-confirm" type="password" class="form-control"
-                                    name="password_confirmation" required autocomplete="new-password">
+                                    name="password_confirmation" required autocomplete="off">
                             </div>
                             <div class="mb-0">
                                 <button type="submit" class="btn btn-primary">
