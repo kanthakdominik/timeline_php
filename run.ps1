@@ -80,6 +80,10 @@ Write-Output "Generating application key..."
 php artisan key:generate
 
 # Run migrations
+Write-Output "Running migration rollback..."
+php artisan migrate:rollback
+
+# Run migrations
 Write-Output "Running migrations..."
 php artisan migrate
 
