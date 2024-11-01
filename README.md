@@ -11,10 +11,16 @@
 git clone https://github.com/kanthakdominik/timeline_php.git
 ```
 
-**3. Run the run script**
+**3. Set the PowerShell execution policy**
 
 ```powershell
-.\run.sh
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser 
+```
+
+**4. Run the run script**
+
+```powershell
+.\run.ps1
 ```
 
 The Timeline application will be available at at <http://localhost:8000>

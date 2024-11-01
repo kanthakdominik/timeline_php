@@ -1,16 +1,16 @@
 
 Write-Output "##############################################"
 Write-Output "##                                          ##"
-Write-Output "##  PLEASE ENSURE THAT MYSQL OR MARIADB     ##"
-Write-Output "##  DATABASE IS INSTALLED.                  ##"
+Write-Output "##        PLEASE ENSURE THAT PHP AND        ##"
+Write-Output "##        MYSQL/MARIADB IS INSTALLED.       ##"
 Write-Output "##                                          ##"
 Write-Output "##############################################"
 
 # Ask the user if they have MySQL or MariaDB installed
-$dbInstalled = Read-Host "Do you have MySQL or MariaDB installed? (yes/no)"
+$dbInstalled = Read-Host "Do you have PHP and MySQL/MariaDB installed? (yes/no)"
 
 if ($dbInstalled -ne "yes") {
-    Write-Output "Please install MySQL or MariaDB before proceeding."
+    Write-Output "Please install PHP and MySQL/MariaDB before proceeding."
     exit
 }
 
