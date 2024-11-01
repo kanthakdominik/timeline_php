@@ -3,11 +3,9 @@
 
 ## Steps to Setup
 
-**1. Download PHP from <https://windows.php.net/download/> and extract it to `C:/php`**
+**1. Install PHP in `C:/php`**
 
-**2. Copy `php.ini-development` to `php.ini`**
-
-**3. Uncomment the extensions:**
+- In `php.ini` uncomment the extensions:
 
 ```ini
 extension=fileinfo
@@ -17,7 +15,11 @@ extension=openssl
 extension=pdo_mysql
 ```
 
-**4. Open the powershell and move to your empty folder**
+**2. Install Composer**
+
+**3. Install node.js and npm**
+
+**4. Install MySQL or MariaDB database**
 
 **5. Clone the repository**
 

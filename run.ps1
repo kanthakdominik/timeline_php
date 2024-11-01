@@ -1,17 +1,9 @@
 Write-Output "##############################################"
 Write-Output "##                                          ##"
-Write-Output "##        PLEASE ENSURE THAT PHP AND        ##"
-Write-Output "##        MYSQL/MARIADB IS INSTALLED.       ##"
+Write-Output "##        PLEASE ENSURE THAT THE STEPS      ##"
+Write-Output "##           FROM README ARE DONE.          ##"
 Write-Output "##                                          ##"
 Write-Output "##############################################"
-
-# Ask the user if they have MySQL or MariaDB installed
-$dbInstalled = Read-Host "Do you have PHP and MySQL/MariaDB installed? (yes/no)"
-
-if ($dbInstalled -ne "yes") {
-    Write-Output "Please install PHP and MySQL/MariaDB before proceeding."
-    exit
-}
 
 # Define paths for .env.example and .env files
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -24,6 +16,7 @@ if (Test-Path $exampleFilePath) {
     Write-Output ".env file created and content copied from .env.example"
 } else {
     Write-Output ".env.example file does not exist"
+    exit
 }
 
 # Display current database configuration values from .env file
@@ -43,6 +36,7 @@ if (Test-Path $newEnvFilePath) {
     Write-Output $dbPassword
 } else {
     Write-Output ".env file does not exist"
+    exit
 }
 # Ask the user if they want to change the database configuration values
 $changeConfig = Read-Host "Do you want to change the database configuration values? (yes/no)"
@@ -68,74 +62,21 @@ if ($changeConfig -eq "yes") {
 } else {
     Write-Output "No changes made to the database configuration values."
 }
-# Check if Composer is installed
-$composerPath = (Get-Command composer -ErrorAction SilentlyContinue).Path
-
-if (-not $composerPath) {
-    Write-Output "Composer is not installed. Installing Composer..."
-
-    # Download Composer installer
-    $composerInstallerUrl = "https://getcomposer.org/installer"
-    $composerInstallerPath = Join-Path $scriptDir "composer-setup.php"
-    Invoke-WebRequest -Uri $composerInstallerUrl -OutFile $composerInstallerPath
-
-    # Install Composer
-    php $composerInstallerPath --install-dir=$scriptDir --filename=composer
-
-    # Verify installation
-	$composerPath = Join-Path $scriptDir "composer"
-	if (Test-Path $composerPath) {
-        Write-Output "Composer installed successfully."
-    } else {
-        Write-Output "Failed to install Composer."
-    }
-
-    # Clean up installer
-    Remove-Item $composerInstallerPath
-} else {
-    Write-Output "Composer is already installed."
-} 
 
 # Navigate to the project directory
+Write-Output "Navigate to timeline_php folder." 
 cd timeline_php
 
 # Install PHP dependencies
 Write-Output "Installing PHP dependencies..."
-Start-Process -FilePath "php" -ArgumentList "$composerPath install --optimize-autoloader" -NoNewWindow -Wait
-
-# Check if Node.js and npm are installed
-$nodePath = (Get-Command node -ErrorAction SilentlyContinue).Path
-$npmPath = (Get-Command npm -ErrorAction SilentlyContinue).Path
-
-if (-not $nodePath -or -not $npmPath) {
-    Write-Output "Node.js or npm is not installed. Installing Node.js and npm..."
-
-    # Download and install Node.js and npm
-    $nodeInstallerUrl = "https://nodejs.org/dist/v14.17.0/node-v14.17.0-x64.msi"
-    $nodeInstallerPath = Join-Path $scriptDir "node-setup.msi"
-    Invoke-WebRequest -Uri $nodeInstallerUrl -OutFile $nodeInstallerPath
-    Start-Process msiexec.exe -ArgumentList "/i", $nodeInstallerPath, "/quiet", "/norestart" -Wait
-
-    # Verify installation
-    $nodePath = (Get-Command node -ErrorAction SilentlyContinue).Path
-    $npmPath = (Get-Command npm -ErrorAction SilentlyContinue).Path
-    if ($nodePath -and $npmPath) {
-        Write-Output "Node.js and npm installed successfully."
-    } else {
-        Write-Output "Failed to install Node.js and npm."
-    }
-
-    # Clean up installer
-    Remove-Item $nodeInstallerPath
-} else {
-    Write-Output "Node.js and npm are already installed."
-}
+composer install --optimize-autoloader
 
 # Install Node.js dependencies
 Write-Output "Installing Node.js dependencies..."
 npm install
 
-# Generate key
+# Generate application key
+Write-Output "Generating application key..." 
 php artisan key:generate
 
 # Run migrations
