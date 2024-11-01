@@ -1,4 +1,3 @@
-
 Write-Output "##############################################"
 Write-Output "##                                          ##"
 Write-Output "##        PLEASE ENSURE THAT PHP AND        ##"
@@ -84,8 +83,8 @@ if (-not $composerPath) {
     php $composerInstallerPath --install-dir=$scriptDir --filename=composer
 
     # Verify installation
-    $composerPath = (Get-Command "$scriptDir\composer" -ErrorAction SilentlyContinue).Path
-    if ($composerPath) {
+	$composerPath = Join-Path $scriptDir "composer"
+	if (Test-Path $composerPath) {
         Write-Output "Composer installed successfully."
     } else {
         Write-Output "Failed to install Composer."
@@ -102,7 +101,7 @@ cd timeline_php
 
 # Install PHP dependencies
 Write-Output "Installing PHP dependencies..."
-composer install --optimize-autoloader
+Start-Process -FilePath "php" -ArgumentList "$composerPath install --optimize-autoloader" -NoNewWindow -Wait
 
 # Check if Node.js and npm are installed
 $nodePath = (Get-Command node -ErrorAction SilentlyContinue).Path

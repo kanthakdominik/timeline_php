@@ -3,21 +3,35 @@
 
 ## Steps to Setup
 
-**1. Open the powershell and move to your empty folder**
+**1. Download PHP from <https://windows.php.net/download/> and extract it to `C:/php`**
 
-**2. Clone the repository**
+**2. Copy `php.ini-development` to `php.ini`**
+
+**3. Uncomment the extensions:**
+
+```ini
+extension=fileinfo
+extension=mbstring
+extension=mysqli
+extension=openssl
+extension=pdo_mysql
+```
+
+**4. Open the powershell and move to your empty folder**
+
+**5. Clone the repository**
 
 ```powershell
 git clone https://github.com/kanthakdominik/timeline_php.git
 ```
 
-**3. Set the PowerShell execution policy**
+**6. Set the PowerShell execution policy**
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser 
 ```
 
-**4. Run the run script**
+**7. Run the run script**
 
 ```powershell
 .\run.ps1
