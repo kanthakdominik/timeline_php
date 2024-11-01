@@ -79,9 +79,16 @@ npm install
 Write-Output "Generating application key..." 
 php artisan key:generate
 
-# Run migrations
-Write-Output "Running migration rollback..."
-php artisan migrate:rollback
+# Ask the user if they want to clear the database
+$clearDatabase = Read-Host "Do you want to clear the database? (yes/no)"
+
+if ($clearDatabase -eq "yes") {
+    # Run migrations rollback
+    Write-Output "Running migration rollback..."
+    php artisan migrate:rollback
+} else {
+    Write-Output "Skipping migration rollback..."
+}
 
 # Run migrations
 Write-Output "Running migrations..."
